@@ -5,4 +5,5 @@ package com.iShamrock.iMuseum;
  */
 public class Git {
     int b;
+    int something;
 }
