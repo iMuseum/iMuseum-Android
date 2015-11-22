@@ -23,6 +23,7 @@ public class Homepage extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
 
+
         initLeftDrawer();
     }
 
