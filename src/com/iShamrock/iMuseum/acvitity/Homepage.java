@@ -25,6 +25,7 @@ public class Homepage extends Activity{
 
 
         initLeftDrawer();
+        //myz start here
     }
 
     private void initLeftDrawer() {
