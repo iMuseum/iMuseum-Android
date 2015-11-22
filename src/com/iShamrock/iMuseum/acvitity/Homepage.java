@@ -24,6 +24,7 @@ public class Homepage extends Activity{
         setContentView(R.layout.homepage);
 
         initLeftDrawer();
+        //myz start here
     }
 
     private void initLeftDrawer() {
