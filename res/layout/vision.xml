@@ -10,11 +10,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
         <!-- add code here-->
+        <com.iShamrock.iMuseum.vision.CameraView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"/>
 
         <com.iShamrock.iMuseum.vision.RecognizedExhibitView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/recognized_exhibit_view"/>
+                android:id="@+id/recognized_exhibit_view" android:layout_alignParentEnd="true"/>
 
         <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
