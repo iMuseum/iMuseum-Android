@@ -1,6 +1,7 @@
 package com.iShamrock.iMuseum.entity;
 
 import android.graphics.Rect;
+import com.iShamrock.iMuseum.acvitity.Vision;
 
 /**
  * Created by lifengshuang on 11/24/15.
