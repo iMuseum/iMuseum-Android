@@ -5,12 +5,14 @@
               android:layout_height="match_parent" android:padding="20dp">
 
     <ImageView
-            android:layout_width="fill_parent"
+            android:layout_width="360dp"
             android:layout_height="wrap_content"
-            android:id="@+id/favor_list_img" android:padding="10dp"/>
+            android:id="@+id/favor_list_img" android:layout_gravity="center" android:paddingLeft="10dp"
+            android:paddingBottom="10dp"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="name"
-            android:id="@+id/favor_list_name" android:layout_gravity="center"/>
+            android:id="@+id/favor_list_name" android:layout_gravity="center" android:textSize="20dp"
+            android:textColor="#000" android:typeface="sans"/>
 </LinearLayout>

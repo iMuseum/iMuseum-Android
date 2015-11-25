@@ -27,7 +27,8 @@ public class MuseumData {
             Map<String, Object> map = new HashMap<>();
             map.put("name", item.getName());
             map.put("img", item.getImgId());
-            System.out.println("add one data: " + item.getName() + item.getImgId());
+            list.add(map);
+//            System.out.println("add one data: " + item.getName() + item.getImgId());
         }
         return list;
     }
