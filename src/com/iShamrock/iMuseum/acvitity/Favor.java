@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.data.DataItem;
+import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 
@@ -21,8 +24,15 @@ public class Favor extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favor);
         initLeftDrawer();
+        initFavorList();
 
+    }
+
+    private void initFavorList() {
         ListView favorList = (ListView) findViewById(R.id.list_favor);
+//        favorList.setAdapter(new ArrayAdapter<>(this, R.layout.favor_item, MuseumData.getAllData()));
+        favorList.setAdapter(new SimpleAdapter(this, MuseumData.getFavorData(),
+                R.layout.favor_item, new String[]{"name", "img"}, new int[]{R.id.favor_list_name, R.id.favor_list_img}));
     }
 
     private void initLeftDrawer() {
