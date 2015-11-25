@@ -30,7 +30,7 @@ public class RecognizedExhibitView extends View {
         super(context, attrs);
         this.context = context;
         linePaint = new Paint();
-        linePaint.setStrokeWidth(6);
+        linePaint.setStrokeWidth(4);
         linePaint.setColor(Color.BLUE);
         textPaint = new Paint();
         textPaint.setTextSize(60);
@@ -38,7 +38,8 @@ public class RecognizedExhibitView extends View {
         rectPaint.setColor(Color.YELLOW);
         rectPaint.setAlpha(60);
 
-        recognizedExhibits.add(new RecognizedExhibit("test", resizeRect(new Rect(300, 300, 600, 600)), 1));
+        recognizedExhibits.add(new RecognizedExhibit("test1", resizeRect(new Rect(300, 300, 600, 600)), 1));
+        recognizedExhibits.add(new RecognizedExhibit("test2", resizeRect(new Rect(400, 500, 800, 800)), 1));
     }
 
     public void setRecognizedExhibits(ArrayList<RecognizedExhibit> recognizedExhibits) {

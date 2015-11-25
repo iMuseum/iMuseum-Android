@@ -14,8 +14,12 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="favor"
-                android:id="@+id/textView4"/>
+                android:text="Favor"
+                android:id="@+id/my_favor" android:textSize="20dp" android:textIsSelectable="false"/>
+        <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_favor"/>
     </LinearLayout>
     <!-- The navigation drawer -->
     <!-- ignore code below-->
