@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
@@ -22,10 +23,9 @@ public class Homepage extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-
-
         initLeftDrawer();
         //myz start here
+        Button showPosition = (Button)findViewById(R.id.showMap);
     }
 
     private void initLeftDrawer() {

@@ -12,10 +12,51 @@
         <!-- add code here-->
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="homepage"
-                android:id="@+id/textView"/>
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Home Page"
+                android:id="@+id/anouncement" android:background="#5cf0ff" android:gravity="center_vertical|center_horizontal"
+                android:textSize="30dp" android:textColor="#ffffff"/>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="290dp"
+                android:id="@+id/mainPic" android:src="@drawable/pic_homePage"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/homePage_layout_textfield" android:weightSum="1">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="199dp"
+                    android:layout_height="match_parent" android:layout_weight="0.98">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Exhibition1"
+                        android:id="@+id/exhibition1"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Exhibition2"
+                        android:id="@+id/exhibition2"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textAppearance="?android:attr/textAppearanceLarge" android:text="Exhibition3"
+                              android:id="@+id/exhibition3"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Exhibition4"
+                        android:id="@+id/exhibition4"/>
+            </LinearLayout>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Where am I?"
+                    android:id="@+id/showMap" android:layout_gravity="bottom"/>
+        </LinearLayout>
     </LinearLayout>
     <!-- The navigation drawer -->
     <!-- ignore code below-->
