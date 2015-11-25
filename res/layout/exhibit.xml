@@ -7,7 +7,7 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp" android:layout_gravity="center" android:orientation="horizontal"
             android:id="@+id/title" android:textAlignment="center" android:gravity="center_horizontal"
-            android:background="#ff212175" android:weightSum="1">
+            android:background="#ff88b9e9" android:weightSum="1">
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -21,9 +21,13 @@
             android:layout_height="250dp"
             android:background="#ff9f9fff"
             android:id="@+id/exhibitView" android:src="@drawable/dog"/>
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent" android:background="#ff7582bb"
-              android:id="@+id/name" android:text="EXHIBITION HALL:" android:textSize="15dp" android:textStyle="bold"
-              android:elegantTextHeight="true" android:textColor="#ffffffff"/>
+        <TextView
+                android:layout_width="5dp"
+                android:layout_height="match_parent"
+                android:id="@+id/textView8" android:background="#8ecee7"/>
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+              android:id="@+id/name" android:text="Exhibition Hall:" android:textSize="15dp" android:textStyle="bold"
+              android:elegantTextHeight="true" android:textColor="#ff749be9" android:background="#ddf0ed"/>
     </LinearLayout>
     <LinearLayout
             android:orientation="vertical"
@@ -32,8 +36,25 @@
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="fill_parent"
-                android:layout_height="40dp" android:background="#ff212175" android:layout_gravity="center_vertical"
-                android:gravity="center|right" android:baselineAligned="false">
+                android:layout_height="40dp" android:background="#8ecee7" android:layout_gravity="center_vertical"
+                android:gravity="center|right" android:baselineAligned="false" android:id="@+id/buttons">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" android:layout_weight="1" android:id="@+id/likeLayout">
+                <ImageButton
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/like" android:src="@drawable/likeit"
+                        android:contentDescription="like it or not" android:background="#8ecee7"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LIKE"
+                        android:id="@+id/textView6"
+                        android:textStyle="bold|italic" android:textSize="15dp" android:layout_gravity="center"
+                        android:textColor="#495A80"/>
+            </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
@@ -41,35 +62,19 @@
                 <ImageButton
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:id="@+id/like" android:src="@drawable/liked" android:background="#ff212175"
-                        android:contentDescription="like it or not"/>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="LIKE"
-                        android:id="@+id/textView6" android:background="#ff212175" android:textColor="#FFFFFFFF"
-                        android:textStyle="bold|italic" android:textSize="15dp" android:layout_gravity="center"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" android:layout_weight="1" android:id="@+id/">
-                <ImageButton
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:id="@+id/go" android:src="@drawable/gps" android:background="#ff212175"
-                        android:layout_gravity="top"/>
+                        android:id="@+id/go" android:src="@drawable/gps"
+                        android:layout_gravity="top" android:background="#8ecee7"/>
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="GO"
-                        android:id="@+id/textView7" android:textColor="#FFFFFFFF" android:textSize="15dp"
-                        android:textStyle="bold|italic" android:layout_gravity="center"/>
+                        android:id="@+id/textView7" android:textSize="15dp"
+                        android:textStyle="bold|italic" android:layout_gravity="center" android:textColor="#495A80"/>
             </LinearLayout>
         </LinearLayout>
-        <TextView android:layout_width="match_parent" android:layout_height="fill_parent" android:background="#ff979797"
-                  android:id="@+id/introduce" android:text="INTRODUCTION:" android:textSize="15dp"
-                  android:textStyle="bold" android:textIsSelectable="false" android:textColor="#ffffffff"/>
+        <TextView android:layout_width="match_parent" android:layout_height="fill_parent" android:background="#ddf0ed"
+                  android:id="@+id/introduce" android:text="Introduction:" android:textSize="15dp"
+                  android:textStyle="bold" android:textIsSelectable="false" android:textColor="#ff749be9"/>
     </LinearLayout>
 
 </LinearLayout>
