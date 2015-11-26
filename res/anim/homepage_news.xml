@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<translate xmlns:android="http://schemas.android.com/apk/res/android"-->
+
+           <!--android:fromXDelta="-320" android:toXDelta="320"-->
+           <!--android:fromYDelta="0" android:toYDelta="0"-->
+           <!--android:duration="10000"-->
+
+<!--&gt;-->
+    <!--&lt;!&ndash;android:interpolator="@anim/linear_interpolator"&ndash;&gt;-->
+
+<!--</translate>-->
+
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+                                 android:oneshot="false">
+<item android:drawable="@drawable/pic1_homepage" android:duration="2000" ></item>
+<item android:drawable="@drawable/pic2_homepage" android:duration="2000" ></item>
+<item android:drawable="@drawable/pic3_homepage" android:duration="2000" ></item>
+<item android:drawable="@drawable/pic4_homepage" android:duration="2000" ></item>
+</animation-list>

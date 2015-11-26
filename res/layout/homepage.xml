@@ -11,11 +11,58 @@
                   android:layout_height="match_parent">
         <!-- add code here-->
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="homepage"
-                android:id="@+id/textView"/>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" android:layout_gravity="center" android:orientation="horizontal"
+                android:id="@+id/title" android:textAlignment="center" android:gravity="center_horizontal"
+                android:background="#ff88b9e9" android:weightSum="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOME PAGE"
+                    android:id="@+id/textView5" android:layout_gravity="center_vertical" android:gravity="center"
+                    android:textStyle="bold" android:textSize="20dp" android:textColor="#ffffffff"/>
+        </LinearLayout>
+        <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="290dp"-->
+                <!--android:id="@+id/mainPic" android:src="@drawable/pic1_homepage"/>-->
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/homePage_layout_textfield" android:weightSum="1">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="199dp"
+                    android:layout_height="match_parent" android:layout_weight="0.98">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Exhibition1"
+                        android:id="@+id/exhibition1"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Exhibition2"
+                        android:id="@+id/exhibition2"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                              android:textAppearance="?android:attr/textAppearanceLarge" android:text="Exhibition3"
+                              android:id="@+id/exhibition3"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Exhibition4"
+                        android:id="@+id/exhibition4"/>
+            </LinearLayout>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Where am I?"
+                    android:id="@+id/showMap" android:layout_gravity="bottom"/>
+        </LinearLayout>
     </LinearLayout>
     <!-- The navigation drawer -->
     <!-- ignore code below-->
