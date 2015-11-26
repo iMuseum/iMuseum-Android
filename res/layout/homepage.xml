@@ -11,16 +11,22 @@
                   android:layout_height="match_parent">
         <!-- add code here-->
 
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Home Page"
-                android:id="@+id/anouncement" android:background="#5cf0ff" android:gravity="center_vertical|center_horizontal"
-                android:textSize="30dp" android:textColor="#ffffff"/>
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" android:layout_gravity="center" android:orientation="horizontal"
+                android:id="@+id/title" android:textAlignment="center" android:gravity="center_horizontal"
+                android:background="#ff88b9e9" android:weightSum="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HOME PAGE"
+                    android:id="@+id/textView5" android:layout_gravity="center_vertical" android:gravity="center"
+                    android:textStyle="bold" android:textSize="20dp" android:textColor="#ffffffff"/>
+        </LinearLayout>
         <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="290dp"
-                android:id="@+id/mainPic" android:src="@drawable/pic_homePage"/>
+                android:id="@+id/mainPic" android:src="@drawable/pic1_homepage"/>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
