@@ -5,21 +5,22 @@
               android:layout_height="match_parent">
     <LinearLayout
             android:layout_width="fill_parent"
-            android:layout_height="50dp" android:layout_gravity="center" android:orientation="horizontal"
+            android:layout_height="50dp" android:orientation="horizontal"
             android:id="@+id/title" android:textAlignment="center" android:gravity="center_horizontal"
-            android:background="#ff88b9e9" android:weightSum="1">
+            android:background="#ff88b9e9" android:weightSum="1" android:paddingLeft="0dp"
+            android:layout_gravity="left">
         <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:id="@+id/Back" android:src="@drawable/back" android:background="#ff88b9e9"
-                android:layout_weight="1"/>
+                />
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="50dp"
                 android:text="GREEN GLAZED POTTERY DOG"
-                android:id="@+id/textView5" android:layout_gravity="center_vertical" android:gravity="center"
+                android:id="@+id/name" android:layout_gravity="center_vertical" android:gravity="center"
                 android:textStyle="bold" android:textSize="20dp" android:textColor="#ffffffff"
-                android:layout_weight="6" android:layout_marginLeft="0dp" android:layout_marginRight="30dp"/>
+                />
     </LinearLayout>
     <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
     <ImageView
@@ -32,7 +33,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/textView8" android:background="#ddf0ed"/>
         <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-              android:id="@+id/name" android:text="Exhibition Hall:" android:textSize="15dp" android:textStyle="bold"
+              android:id="@+id/hall" android:text="Exhibition Hall:" android:textSize="15dp" android:textStyle="bold"
               android:elegantTextHeight="true" android:textColor="#ff749be9" android:background="#ddf0ed"/>
     </LinearLayout>
     <LinearLayout
@@ -78,9 +79,16 @@
                         android:textStyle="bold|italic" android:layout_gravity="center" android:textColor="#495A80"/>
             </LinearLayout>
         </LinearLayout>
-        <TextView android:layout_width="match_parent" android:layout_height="fill_parent" android:background="#ddf0ed"
-                  android:id="@+id/introduce" android:text="Introduction:" android:textSize="15dp"
-                  android:textStyle="bold" android:textIsSelectable="false" android:textColor="#ff749be9"/>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/scrollView" android:layout_gravity="center_horizontal" android:background="#ddf0ed"
+                android:fillViewport="false">
+            <TextView android:layout_width="match_parent" android:layout_height="fill_parent" android:background="#ddf0ed"
+                      android:id="@+id/introduce" android:text="Introduction:" android:textSize="15dp"
+                      android:textStyle="bold" android:textIsSelectable="false" android:textColor="#ff749be9"
+                      android:autoText="false"/>
+        </ScrollView>
     </LinearLayout>
 
 </LinearLayout>
