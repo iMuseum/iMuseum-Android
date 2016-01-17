@@ -85,7 +85,7 @@ public class RecognizedExhibitView extends View {
                     if (exhibit.getRect().contains((int) event.getX(), (int) event.getY())) {
                         //after recongnizing, get the id of the dataItem
                         int id = 1;
-                        
+
                         Intent intent = new Intent();
                         Bundle bundle = new Bundle();
                         bundle.putInt("id",id);
