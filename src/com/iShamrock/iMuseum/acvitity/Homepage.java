@@ -27,10 +27,10 @@ public class Homepage extends Activity{
         setContentView(R.layout.homepage);
         initLeftDrawer();
         //myz start here
-        Button showPosition = (Button) findViewById(R.id.showMap);
-
-        ivAnimView = (ImageView) findViewById(R.id.exhibitView);
-        ivAnimView.setBackgroundResource(R.drawable.pic1_homepage);
+        Button showPosition = (Button) findViewById(R.id.showMap);//TODO
+        //pictures shown
+        ivAnimView = (ImageView) findViewById(R.id.mainPic);
+        ivAnimView.setBackgroundResource(R.anim.homepage_news);
         Object backgroundObject = ivAnimView.getBackground();
         animationDrawable = (AnimationDrawable) backgroundObject;
         animationDrawable.stop();
