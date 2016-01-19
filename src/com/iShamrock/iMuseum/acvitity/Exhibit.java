@@ -56,7 +56,7 @@ public class Exhibit extends Activity{
             }
         });
         /* when the user click the like button, change the image it shows */
-        likeLayout.setOnClickListener(new View.OnClickListener() {
+        like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!isLiked) {
