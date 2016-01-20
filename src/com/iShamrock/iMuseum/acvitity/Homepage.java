@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
@@ -20,6 +21,7 @@ import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 public class Homepage extends Activity{
     private AnimationDrawable animationDrawable;
     private ImageView ivAnimView;
+    private Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +29,14 @@ public class Homepage extends Activity{
         setContentView(R.layout.homepage);
         initLeftDrawer();
         //myz start here
-        Button showPosition = (Button) findViewById(R.id.showMap);//TODO
+//        Button showPosition = (Button) findViewById(R.id.show);//TODO
         //pictures shown
         ivAnimView = (ImageView) findViewById(R.id.mainPic);
+//        animation = AnimationUtils.loadAnimation(this, R.anim.translate_pic);
+//        ivAnimView.setAnimation(animation);
+//        animation.start();
+//        animation.setRepeatCount(Animation.INFINITE);
+//        ivAnimView.setVisibility(ImageView.VISIBLE);
         ivAnimView.setBackgroundResource(R.anim.homepage_news);
         Object backgroundObject = ivAnimView.getBackground();
         animationDrawable = (AnimationDrawable) backgroundObject;
