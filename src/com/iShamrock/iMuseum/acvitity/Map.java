@@ -23,6 +23,7 @@ public class Map extends Activity{
         /* use TabHost to show the maps of floors. */
         TabHost tabHost = (TabHost)this.findViewById(R.id.tabHost);
         tabHost.setup();
+
         tabHost.addTab(tabHost.newTabSpec("floor1").setIndicator("floor1").setContent(R.id.f1));
         tabHost.addTab(tabHost.newTabSpec("floor2").setIndicator("floor2").setContent(R.id.f2));
         tabHost.addTab(tabHost.newTabSpec("floor3").setIndicator("floor3").setContent(R.id.f3));
