@@ -11,11 +11,81 @@
                   android:layout_height="match_parent">
         <!-- add code here-->
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="map"
-                android:id="@+id/textView2"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48dp"
+                      android:background="#6696C8" android:weightSum="1">
+            <ImageButton android:layout_width="52dp" android:layout_height="match_parent" android:id="@+id/imageButton2"
+                         android:src="@drawable/menu" android:background="#6696C8"/>
+            <TextView android:layout_width="286dp" android:layout_height="match_parent"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="iMuseum"
+                      android:id="@+id/textView3" android:textColor="#ffffff" android:layout_gravity="center"
+                      android:gravity="center_vertical|center_horizontal"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="35dp" android:orientation="horizontal"
+                      android:id="@+id/linearLayout" android:textAlignment="center" android:weightSum="1"
+                      android:paddingLeft="0dp" android:layout_gravity="left" android:background="#C6C6C6">
+            <ImageButton android:layout_width="52dp" android:layout_height="fill_parent" android:id="@+id/imageButton3"
+                         android:src="@drawable/back_black" android:background="#C6C6C6"
+                         android:adjustViewBounds="true"/>
+            <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Map"
+                      android:id="@+id/textView" android:textColor="#383838" android:gravity="center_vertical"/>
+        </LinearLayout>
+        <TabHost
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" android:id="@+id/tabHost">
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical">
+                <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                </TabWidget>
+                <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                    <LinearLayout
+                            android:id="@+id/tab1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical" android:focusableInTouchMode="false">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/f1" android:src="@drawable/floor1"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:id="@+id/tab2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/f2" android:src="@drawable/floor2"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:id="@+id/tab3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:orientation="vertical">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/f3" android:src="@drawable/floor3"/>
+                    </LinearLayout>
+                    <LinearLayout android:id="@+id/tab4" android:layout_width="fill_parent"
+                                  android:layout_height="fill_parent" android:orientation="vertical">
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/f4" android:src="@drawable/floor4"/>
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
     </LinearLayout>
     <!-- The navigation drawer -->
     <!-- ignore code below-->
