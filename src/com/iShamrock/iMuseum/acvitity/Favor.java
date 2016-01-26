@@ -38,7 +38,6 @@ public class Favor extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(), (String) data.get(i).get("name"), Toast.LENGTH_LONG).show();
-
                 Intent intent = new Intent();
                 intent.setClass(Favor.this, Exhibit.class);
                 intent.putExtra("id", (int) data.get(i).get("id"));
