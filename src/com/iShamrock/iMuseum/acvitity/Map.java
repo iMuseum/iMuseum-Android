@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TabHost;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
@@ -19,6 +20,14 @@ public class Map extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
+        /* use TabHost to show the maps of floors. */
+        TabHost tabHost = (TabHost)this.findViewById(R.id.tabHost);
+        tabHost.setup();
+        tabHost.addTab(tabHost.newTabSpec("floor1").setIndicator("floor1").setContent(R.id.f1));
+        tabHost.addTab(tabHost.newTabSpec("floor2").setIndicator("floor2").setContent(R.id.f2));
+        tabHost.addTab(tabHost.newTabSpec("floor3").setIndicator("floor3").setContent(R.id.f3));
+        tabHost.addTab(tabHost.newTabSpec("floor4").setIndicator("floor4").setContent(R.id.f4));
+        tabHost.setCurrentTab(0);
         initLeftDrawer();
     }
     private void initLeftDrawer() {

@@ -3,12 +3,15 @@ package com.iShamrock.iMuseum.vision;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.*;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import com.iShamrock.iMuseum.acvitity.Exhibit;
 import com.iShamrock.iMuseum.acvitity.Map;
+import com.iShamrock.iMuseum.data.DataItem;
+import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.entity.RecognizedExhibit;
 
 import java.util.ArrayList;
@@ -80,8 +83,14 @@ public class RecognizedExhibitView extends View {
 //            if (Math.abs(this.touchX - event.getX()) < 30 && Math.abs(this.touchY - event.getY()) < 30) {
                 for (RecognizedExhibit exhibit : recognizedExhibits) {
                     if (exhibit.getRect().contains((int) event.getX(), (int) event.getY())) {
+                        //after recongnizing, get the id of the dataItem
+                        int id = 1;
+
                         Intent intent = new Intent();
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("id",id);
                         intent.setClass(context, Exhibit.class);
+                        intent.putExtras(bundle);
                         context.startActivity(intent);
                         break;
                     }
