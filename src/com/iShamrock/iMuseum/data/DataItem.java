@@ -11,11 +11,13 @@ public class DataItem {
     private String dynasty;
     private String type;
     private String author;
+    private String location;
+    private int floor;
 
     public DataItem() {
     }
 
-    public DataItem(int id, String name, int imgId, String description, String dynasty, String type, String author) {
+    public DataItem(int id, String name, int imgId, String description, String dynasty, String type, String author, String location, int floor) {
         this.id = id;
         this.name = name;
         this.imgId = imgId;
@@ -23,6 +25,8 @@ public class DataItem {
         this.dynasty = dynasty;
         this.type = type;
         this.author = author;
+        this.location = location;
+        this.floor = floor;
     }
 
     public DataItem id(int id) {
@@ -60,6 +64,16 @@ public class DataItem {
         return this;
     }
 
+    public DataItem location(String location) {
+        this.location = location;
+        return this;
+    }
+
+    public DataItem floor(int floor) {
+        this.floor = floor;
+        return this;
+    }
+
     public int getId() {
         return id;
     }
@@ -86,5 +100,13 @@ public class DataItem {
 
     public String getAuthor() {
         return author;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public int getFloor() {
+        return floor;
     }
 }
