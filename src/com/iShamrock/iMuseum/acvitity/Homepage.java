@@ -2,14 +2,15 @@ package com.iShamrock.iMuseum.acvitity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.*;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
@@ -18,14 +19,29 @@ import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
  * Created by lifengshuang on 11/18/15.
  */
 public class Homepage extends Activity{
+    private AnimationDrawable animationDrawable;
+    private ImageView ivAnimView;
+    private Animation animation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-
-
         initLeftDrawer();
         //myz start here
+//        Button showPosition = (Button) findViewById(R.id.show);//TODO
+        //pictures shown
+        ivAnimView = (ImageView) findViewById(R.id.mainPic);
+//        animation = AnimationUtils.loadAnimation(this, R.anim.translate_pic);
+//        ivAnimView.setAnimation(animation);
+//        animation.start();
+//        animation.setRepeatCount(Animation.INFINITE);
+//        ivAnimView.setVisibility(ImageView.VISIBLE);
+        ivAnimView.setBackgroundResource(R.anim.homepage_news);
+        Object backgroundObject = ivAnimView.getBackground();
+        animationDrawable = (AnimationDrawable) backgroundObject;
+        animationDrawable.stop();
+        animationDrawable.start();
     }
 
     private void initLeftDrawer() {
