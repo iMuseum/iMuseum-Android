@@ -27,14 +27,16 @@ public class Exhibit extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exhibit);
+
         /* get the id of this exhibit */
         Bundle bundle = this.getIntent().getExtras();
         int id = bundle.getInt("id");
+
         /* get the information of this exhibit */
         DataItem exhibit = MuseumData.getDataById(id);
-        TextView nameText = (TextView) this.findViewById(R.id.name);
-        ImageView exhibitView = (ImageView) this.findViewById(R.id.exhibitView);
-        TextView introduce = (TextView) this.findViewById(R.id.introduce);
+        TextView nameText = (TextView) this.findViewById(R.id.exhibit_name);
+        ImageView exhibitView = (ImageView) this.findViewById(R.id.exhibit_view);
+        TextView introduce = (TextView) this.findViewById(R.id.exhibit_introduce);
         /* set the title of the exhibit as the name */
         nameText.setText(exhibit.getName());
         /* set the image of the exhibit */
@@ -42,11 +44,17 @@ public class Exhibit extends Activity{
         /* set the introduce of the exhibit */
         introduce.setText("朝代：" + exhibit.getDynasty() + "  类型：" + exhibit.getType() + "\n" + exhibit.getDescription());
         Activity activity = this;
-        
+
+        isLiked = MuseumData.isFavored(id);
         likeLayout = (LinearLayout)this.findViewById(R.id.likeLayout);
-        back = (ImageButton)this.findViewById(R.id.Back);
+        back = (ImageButton)this.findViewById(R.id.exhibit_back);
         like = (ImageButton)this.findViewById(R.id.like);
         go = (ImageButton)this.findViewById(R.id.go);
+
+        if (isLiked) {
+            like.setImageDrawable(getResources().getDrawable(R.drawable.liked));
+        }
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,13 +69,16 @@ public class Exhibit extends Activity{
             public void onClick(View view) {
                 if(!isLiked) {
                     like.setImageDrawable(getResources().getDrawable(R.drawable.liked));
+                    MuseumData.addFavorItem(id);
                     isLiked = true;
                 }
                 else {
                     like.setImageDrawable(getResources().getDrawable(R.drawable.likeit));
+                    MuseumData.deleteFavorItem(id);
                     isLiked = false;
                 }
             }
         });
     }
+
 }

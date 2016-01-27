@@ -103,4 +103,12 @@ public class MuseumData {
         addFavorItem(0);
         addFavorItem(2);
     }
+
+    public static boolean isFavored(int id){
+        boolean isFavored = false;
+        if(favors.contains(id)){
+            isFavored = true;
+        }
+        return isFavored;
+    }
 }

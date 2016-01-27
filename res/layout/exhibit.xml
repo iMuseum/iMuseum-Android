@@ -6,30 +6,30 @@
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="48dp" android:background="#6696C8" android:weightSum="1"
+            android:layout_height="50dp" android:background="#ff88b9e9" android:weightSum="1"
             >
         <ImageButton
                 android:layout_width="52dp"
                 android:layout_height="match_parent"
-                android:id="@+id/imageButton" android:src="@drawable/menu" android:background="#6696C8"/>
+                android:id="@+id/exhibit_menu" android:src="@drawable/menu" android:background="#ff88b9e9"/>
         <TextView
                 android:layout_width="286dp"
                 android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="iMuseum"
-                android:id="@+id/maintitle" android:textColor="#ffffff"
+                android:id="@+id/main_title" android:textColor="#ffffff"
                 android:layout_gravity="center" android:gravity="center_vertical|center_horizontal"/>
     </LinearLayout>
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="35dp" android:orientation="horizontal"
-            android:id="@+id/title" android:textAlignment="center"
+            android:id="@+id/exhibit_title" android:textAlignment="center"
             android:weightSum="1" android:paddingLeft="0dp"
             android:layout_gravity="left" android:background="#C6C6C6">
         <ImageButton
                 android:layout_width="52dp"
                 android:layout_height="fill_parent"
-                android:id="@+id/Back" android:src="@drawable/back_black"
+                android:id="@+id/exhibit_back" android:src="@drawable/back_black"
                 android:background="#C6C6C6" android:adjustViewBounds="true"/>
         <TextView android:layout_width="match_parent" android:layout_height="match_parent"
                   android:textAppearance="?android:attr/textAppearanceMedium" android:text="Exhibition" android:id="@+id/textView2"
@@ -58,7 +58,7 @@
                             android:layout_width="fill_parent"
                             android:layout_height="match_parent"
                             android:text="GREEN GLAZED POTTERY DOG"
-                            android:id="@+id/name"
+                            android:id="@+id/exhibit_name"
                             android:textSize="15dp" android:textColor="#000000"
                             android:textStyle="italic"/>
                 </LinearLayout>
@@ -66,7 +66,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:id="@+id/exhibitView" android:src="@drawable/dog" android:background="#6696C8"/>
+                android:id="@+id/exhibit_view" android:src="@drawable/dog" android:background="#ff88b9e9"/>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="fill_parent"
@@ -109,12 +109,12 @@
                 </LinearLayout>
             </LinearLayout>
             <TextView android:layout_width="fill_parent" android:layout_height="35dp"
-                  android:id="@+id/hall"
+                  android:id="@+id/exhibit_hall"
                       android:elegantTextHeight="true" android:background="#C6C6C6"
                       android:text="Exhibition Hall:" android:textColor="#383838" android:gravity="center_vertical"
                       android:paddingLeft="15dp"/>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:id="@+id/introduce" android:text="Introduction:" android:textSize="15dp"
+                      android:id="@+id/exhibit_introduce" android:text="Introduction:" android:textSize="15dp"
                       android:textIsSelectable="false" android:textColor="#383838"
                       android:autoText="false" android:layout_margin="15dp"/>
         </LinearLayout>
