@@ -34,15 +34,18 @@ public class Exhibit extends Activity{
 
         /* get the information of this exhibit */
         DataItem exhibit = MuseumData.getDataById(id);
-        TextView nameText = (TextView) this.findViewById(R.id.exhibit_name);
-        ImageView exhibitView = (ImageView) this.findViewById(R.id.exhibit_view);
-        TextView introduce = (TextView) this.findViewById(R.id.exhibit_introduce);
+        TextView exhibit_name = (TextView) this.findViewById(R.id.exhibit_name);
+        ImageView exhibit_view = (ImageView) this.findViewById(R.id.exhibit_view);
+        TextView exhibit_hall = (TextView) this.findViewById(R.id.exhibit_hall);
+        TextView exhibit_introduce = (TextView) this.findViewById(R.id.exhibit_introduce);
         /* set the title of the exhibit as the name */
-        nameText.setText(exhibit.getName());
+        exhibit_name.setText(exhibit.getName());
         /* set the image of the exhibit */
-        exhibitView.setImageDrawable(getResources().getDrawable(exhibit.getImgId()));
+        exhibit_view.setImageDrawable(getResources().getDrawable(exhibit.getImgId()));
+        /* set the hall of the exhibit */
+        exhibit_hall.setText("Exhibition Hall: " + exhibit.getLocation());
         /* set the introduce of the exhibit */
-        introduce.setText("朝代：" + exhibit.getDynasty() + "  类型：" + exhibit.getType() + "\n" + exhibit.getDescription());
+        exhibit_introduce.setText("朝代：" + exhibit.getDynasty() + "  类型：" + exhibit.getType() + "\n" + exhibit.getDescription());
         Activity activity = this;
 
         isLiked = MuseumData.isFavored(id);

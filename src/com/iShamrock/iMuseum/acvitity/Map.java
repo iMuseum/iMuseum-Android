@@ -1,11 +1,14 @@
 package com.iShamrock.iMuseum.acvitity;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import com.iShamrock.iMuseum.R;
@@ -16,10 +19,23 @@ import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
  * Created by lifengshuang on 11/18/15.
  */
 public class Map extends Activity{
+    private ImageView f2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
+        //todo
+        Activity activity = this;
+        f2 = (ImageView) this.findViewById(R.id.f2);
+        f2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                startActivity(intent);
+            }
+        });
+
         /* use TabHost to show the maps of floors. */
         TabHost tabHost = (TabHost)this.findViewById(R.id.tabHost);
         tabHost.setup();
@@ -29,6 +45,7 @@ public class Map extends Activity{
         tabHost.addTab(tabHost.newTabSpec("floor3").setIndicator("floor3").setContent(R.id.f3));
         tabHost.addTab(tabHost.newTabSpec("floor4").setIndicator("floor4").setContent(R.id.f4));
         tabHost.setCurrentTab(0);
+
         initLeftDrawer();
     }
     private void initLeftDrawer() {

@@ -17,6 +17,7 @@
         <activity android:name=".acvitity.Vision"/>
         <activity android:name=".acvitity.Favor"/>
         <activity android:name=".acvitity.Exhibit"/>
+        <activity android:name=".acvitity.Showroom"/>
     </application>
 
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />

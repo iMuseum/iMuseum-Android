@@ -104,11 +104,27 @@ public class MuseumData {
         addFavorItem(2);
     }
 
-    public static boolean isFavored(int id){
+    public static boolean isFavored(int id) {
         boolean isFavored = false;
         if(favors.contains(id)){
             isFavored = true;
         }
         return isFavored;
+    }
+
+    public static List<Map<String, Object>> getShowroomData(String showroom) {
+        List<Map<String, Object>> list = new LinkedList<>();
+        for (DataItem item : data) {
+            if (item.getLocation().equals(showroom)) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("id", item.getId());
+                map.put("name", item.getName());
+                map.put("description", item.getDescription().length() >= 80
+                        ? item.getDescription().substring(0, 80) + "..." : item.getDescription());
+                map.put("img", item.getImgId());
+                list.add(map);
+            }
+        }
+        return list;
     }
 }
