@@ -81,7 +81,7 @@
                     <ImageButton
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:id="@+id/like" android:src="@drawable/likeit"
+                            android:id="@+id/exhibit_like" android:src="@drawable/likeit"
                             android:contentDescription="like it or not"/>
                     <TextView
                             android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                     <ImageButton
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:id="@+id/go" android:src="@drawable/gps"
+                            android:id="@+id/exhibit_go" android:src="@drawable/gps"
                             android:layout_gravity="top"/>
                     <TextView
                             android:layout_width="wrap_content"

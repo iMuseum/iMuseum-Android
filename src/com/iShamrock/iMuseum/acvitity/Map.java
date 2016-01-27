@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TabHost;
+import android.widget.*;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
@@ -19,15 +16,26 @@ import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
  * Created by lifengshuang on 11/18/15.
  */
 public class Map extends Activity{
-    private ImageView f2;
+    private TextView map_touch0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
-        //todo
+
+        /* use TabHost to show the maps of floors. */
+        TabHost tabHost = (TabHost)this.findViewById(R.id.tabHost);
+        tabHost.setup();
+
+        tabHost.addTab(tabHost.newTabSpec("floor1").setIndicator("floor1").setContent(R.id.map_layout_floor1));
+        tabHost.addTab(tabHost.newTabSpec("floor2").setIndicator("floor2").setContent(R.id.map_layout_floor2));
+        tabHost.addTab(tabHost.newTabSpec("floor3").setIndicator("floor3").setContent(R.id.map_layout_floor3));
+        tabHost.addTab(tabHost.newTabSpec("floor4").setIndicator("floor4").setContent(R.id.map_layout_floor4));
+        tabHost.setCurrentTab(0);
+
+//todo
         Activity activity = this;
-        f2 = (ImageView) this.findViewById(R.id.f2);
-        f2.setOnClickListener(new View.OnClickListener() {
+        map_touch0 = (TextView) this.findViewById(R.id.map_touch0);
+        map_touch0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
@@ -35,16 +43,6 @@ public class Map extends Activity{
                 startActivity(intent);
             }
         });
-
-        /* use TabHost to show the maps of floors. */
-        TabHost tabHost = (TabHost)this.findViewById(R.id.tabHost);
-        tabHost.setup();
-
-        tabHost.addTab(tabHost.newTabSpec("floor1").setIndicator("floor1").setContent(R.id.f1));
-        tabHost.addTab(tabHost.newTabSpec("floor2").setIndicator("floor2").setContent(R.id.f2));
-        tabHost.addTab(tabHost.newTabSpec("floor3").setIndicator("floor3").setContent(R.id.f3));
-        tabHost.addTab(tabHost.newTabSpec("floor4").setIndicator("floor4").setContent(R.id.f4));
-        tabHost.setCurrentTab(0);
 
         initLeftDrawer();
     }

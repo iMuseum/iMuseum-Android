@@ -51,37 +51,60 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:orientation="vertical" android:focusableInTouchMode="false">
-                        <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/f1" android:src="@drawable/floor1"/>
+                        <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent" android:id="@+id/map_layout_floor1">
+                            <ImageView
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:id="@+id/map_floor1" android:src="@drawable/floor1"/>
+                            <TextView android:layout_width="100dp" android:layout_height="100dp"
+                                      android:id="@+id/map_touch1" android:layout_marginLeft="150dp"
+                                      android:layout_marginTop="-200dp"/>
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                             android:id="@+id/tab2"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:orientation="vertical">
-                        <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/f2" android:src="@drawable/floor2"/>
+                        <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="fill_parent"
+                                android:layout_height="fill_parent" android:id="@+id/map_layout_floor2">
+                            <ImageView
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:id="@+id/map_floor2" android:src="@drawable/floor2"/>
+                            <TextView android:layout_width="100dp" android:layout_height="100dp"
+                                      android:id="@+id/map_touch0" android:layout_marginLeft="150dp"
+                                      android:layout_marginTop="-195dp" android:text="go->"
+                                      android:textColor="#ff425870"/>
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                             android:id="@+id/tab3"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:orientation="vertical">
-                        <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/f3" android:src="@drawable/floor3"/>
+                        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                      android:layout_height="fill_parent" android:id="@+id/map_layout_floor3">
+                            <ImageView
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:id="@+id/map_floor3" android:src="@drawable/floor3"/>
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:id="@+id/tab4" android:layout_width="fill_parent"
                                   android:layout_height="fill_parent" android:orientation="vertical">
-                        <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/f4" android:src="@drawable/floor4"/>
+                        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"
+                                      android:layout_height="fill_parent" android:id="@+id/map_layout_floor4">
+                            <ImageView
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:id="@+id/map_floor4" android:src="@drawable/floor4"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </FrameLayout>
             </LinearLayout>

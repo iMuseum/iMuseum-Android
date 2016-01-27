@@ -51,8 +51,8 @@ public class Exhibit extends Activity{
         isLiked = MuseumData.isFavored(id);
         likeLayout = (LinearLayout)this.findViewById(R.id.likeLayout);
         back = (ImageButton)this.findViewById(R.id.exhibit_back);
-        like = (ImageButton)this.findViewById(R.id.like);
-        go = (ImageButton)this.findViewById(R.id.go);
+        like = (ImageButton)this.findViewById(R.id.exhibit_like);
+        go = (ImageButton)this.findViewById(R.id.exhibit_go);
 
         if (isLiked) {
             like.setImageDrawable(getResources().getDrawable(R.drawable.liked));
@@ -80,6 +80,16 @@ public class Exhibit extends Activity{
                     MuseumData.deleteFavorItem(id);
                     isLiked = false;
                 }
+            }
+        });
+
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Map.class);
+                //intent.putExtra("floor", (int)exhibit.getFloor());
+                startActivity(intent);
             }
         });
     }
