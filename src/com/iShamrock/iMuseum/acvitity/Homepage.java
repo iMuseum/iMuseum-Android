@@ -46,13 +46,15 @@ public class Homepage extends Activity{
         animationDrawable = (AnimationDrawable) backgroundObject;
         animationDrawable.stop();
         animationDrawable.start();
+
+        initShowroomList();
     }
 
-    private void initFavorList() {
+    private void initShowroomList() {
         ListView favorList = (ListView) findViewById(R.id.showroomList);
         List<java.util.Map<String, Object>> data = ShowroomData.getShowroomData();
         favorList.setAdapter(new SimpleAdapter(this, data,
-                R.layout.favor_item, new String[]{"name", "img", "description", "location"},
+                R.layout.homepage_listview, new String[]{"name", "englishName", "location"},
                 new int[]{R.id.favor_list_name, R.id.favor_list_img, R.id.favor_list_description, R.id.favor_list_location}));
         favorList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -39,11 +39,11 @@ public class ShowroomData {
     public static List<Map<String, Object>> getShowroomData() {
         List<Map<String, Object>> list = new LinkedList<>();
         for (ShowroomItem item : data) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("name", item.getName());
-                map.put("location", " (" + item.getFloor() + "楼)");
-                map.put("englishName", item.getEnglishName());
-                list.add(map);
+            Map<String, Object> map = new HashMap<>();
+            map.put("name", item.getName());
+            map.put("englishName", item.getEnglishName());
+            map.put("location", " (" + item.getFloor() + "楼)");
+            list.add(map);
         }
         return list;
     }

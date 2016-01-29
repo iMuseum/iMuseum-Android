@@ -12,10 +12,12 @@
                       android:layout_height="wrap_content" android:layout_marginLeft="15dp"
                       android:layout_marginTop="5dp">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="name"
-                      android:id="@+id/showroom_list_name" android:textSize="16dp" android:textColor="#ff3061d4"
+                      android:id="@+id/showroom_name" android:textSize="16dp" android:textColor="#ff3061d4"
                       android:typeface="sans"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:text="description" android:id="@+id/showroom_list_description"/>
+                      android:text="EnglishName" android:id="@+id/showroom_englishName"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="location" android:id="@+id/showroom_location"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
