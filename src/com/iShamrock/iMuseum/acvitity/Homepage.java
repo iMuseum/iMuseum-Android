@@ -12,8 +12,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.data.MuseumData;
+import com.iShamrock.iMuseum.data.ShowroomData;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
+
+import java.util.*;
 
 /**
  * Created by lifengshuang on 11/18/15.
@@ -42,6 +46,24 @@ public class Homepage extends Activity{
         animationDrawable = (AnimationDrawable) backgroundObject;
         animationDrawable.stop();
         animationDrawable.start();
+    }
+
+    private void initFavorList() {
+        ListView favorList = (ListView) findViewById(R.id.showroomList);
+        List<java.util.Map<String, Object>> data = ShowroomData.getShowroomData();
+        favorList.setAdapter(new SimpleAdapter(this, data,
+                R.layout.favor_item, new String[]{"name", "img", "description", "location"},
+                new int[]{R.id.favor_list_name, R.id.favor_list_img, R.id.favor_list_description, R.id.favor_list_location}));
+        favorList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(), (String) data.get(i).get("name"), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent();
+                intent.setClass(Favor.this, Exhibit.class);
+                intent.putExtra("id", (int) data.get(i).get("id"));
+                startActivity(intent);
+            }
+        });
     }
 
     private void initLeftDrawer() {

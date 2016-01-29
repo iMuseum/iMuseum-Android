@@ -36,22 +36,11 @@
             <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent" android:layout_weight="0.87">
-                <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="50dp"
-                        android:id="@+id/toExhibition1" android:src="@drawable/exhibition1"/>
-                <ImageButton android:layout_width="wrap_content" android:layout_height="50dp"
-                             android:id="@+id/toExhibition2" android:src="@drawable/exhibition1"/>
-                <ImageButton android:layout_width="wrap_content" android:layout_height="50dp"
-                             android:id="@+id/toExhibition3" android:src="@drawable/exhibition1"/>
-                <ImageButton android:layout_width="wrap_content" android:layout_height="50dp"
-                             android:id="@+id/toExhibition4" android:src="@drawable/exhibition1"/>
-                <ImageButton
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:id="@+id/show" android:layout_gravity="right"
-                        android:src="@android:drawable/ic_menu_add"/>
+                    android:layout_height="match_parent" android:layout_weight="0.87" android:id="@+id/">
+                <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/showroomList" android:layout_gravity="center_horizontal"/>
             </LinearLayout>
         </LinearLayout>
         <!---->
