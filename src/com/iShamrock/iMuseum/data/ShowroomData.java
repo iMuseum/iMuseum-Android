@@ -26,10 +26,22 @@ public class ShowroomData {
         data.add(i2);
         ShowroomItem i3 = new ShowroomItem();
         i3
-                .setName("中国古代青铜馆")
+                .setName("中国古代雕塑馆")
                 .setEnglishName("Ancient Chinese Bronze Gallery")
                 .setFloor(1);
         data.add(i3);
+        ShowroomItem i4 = new ShowroomItem();
+        i4
+                .setName("第二展览馆")
+                .setEnglishName("Exhibition Hall")
+                .setFloor(2);
+        data.add(i4);
+        ShowroomItem i5 = new ShowroomItem();
+        i5
+                .setName("中国古代陶瓷馆")
+                .setEnglishName("Gallery of Chinese Ancient Ceramics")
+                .setFloor(2);
+        data.add(i5);
     }
 
     public static ArrayList<ShowroomItem> getShowroomList() {

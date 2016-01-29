@@ -51,19 +51,20 @@ public class Homepage extends Activity{
     }
 
     private void initShowroomList() {
-        ListView favorList = (ListView) findViewById(R.id.showroomList);
+        ListView showroomList = (ListView) findViewById(R.id.showroomList);
         List<java.util.Map<String, Object>> data = ShowroomData.getShowroomData();
-        favorList.setAdapter(new SimpleAdapter(this, data,
+        showroomList.setAdapter(new SimpleAdapter(this, data,
                 R.layout.homepage_listview, new String[]{"name", "englishName", "location"},
-                new int[]{R.id.favor_list_name, R.id.favor_list_img, R.id.favor_list_description, R.id.favor_list_location}));
-        favorList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                new int[]{R.id.showroom_name, R.id.showroom_englishName, R.id.showroom_location}));
+
+        showroomList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), (String) data.get(i).get("name"), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent();
-                intent.setClass(Favor.this, Exhibit.class);
-                intent.putExtra("id", (int) data.get(i).get("id"));
-                startActivity(intent);
+//                Toast.makeText(getApplicationContext(), (String) data.get(i).get("name"), Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent();
+//                intent.setClass(Favor.this, Exhibit.class);
+//                intent.putExtra("id", (int) data.get(i).get("id"));
+//                startActivity(intent);//TODO
             }
         });
     }
