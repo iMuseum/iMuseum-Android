@@ -60,11 +60,11 @@ public class Homepage extends Activity{
         showroomList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast.makeText(getApplicationContext(), (String) data.get(i).get("name"), Toast.LENGTH_LONG).show();
-//                Intent intent = new Intent();
-//                intent.setClass(Favor.this, Exhibit.class);
-//                intent.putExtra("id", (int) data.get(i).get("id"));
-//                startActivity(intent);//TODO
+                Toast.makeText(getApplicationContext(), (String) data.get(i).get("name"), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent();
+                intent.setClass(Homepage.this, Showroom.class);
+                intent.putExtra("name", (String) data.get(i).get("name"));
+                startActivity(intent);
             }
         });
     }
