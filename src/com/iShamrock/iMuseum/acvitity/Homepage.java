@@ -26,6 +26,7 @@ public class Homepage extends Activity{
     private AnimationDrawable animationDrawable;
     private ImageView ivAnimView;
     private Animation animation;
+    private ImageButton imageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +34,28 @@ public class Homepage extends Activity{
         setContentView(R.layout.homepage);
         initLeftDrawer();
         //myz start here
-//        Button showPosition = (Button) findViewById(R.id.show);//TODO
-        //pictures shown
-        ivAnimView = (ImageView) findViewById(R.id.mainPic);
 //        animation = AnimationUtils.loadAnimation(this, R.anim.translate_pic);
 //        ivAnimView.setAnimation(animation);
 //        animation.start();
 //        animation.setRepeatCount(Animation.INFINITE);
 //        ivAnimView.setVisibility(ImageView.VISIBLE);
+        //pictures shown
+        ivAnimView = (ImageView) findViewById(R.id.mainPic);
         ivAnimView.setBackgroundResource(R.anim.homepage_news);
         Object backgroundObject = ivAnimView.getBackground();
         animationDrawable = (AnimationDrawable) backgroundObject;
         animationDrawable.stop();
         animationDrawable.start();
+
+        imageButton = (ImageButton) findViewById(R.id.hello);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(Homepage.this, Test.class);
+                startActivity(intent);
+            }
+        });
 
         initShowroomList();
     }

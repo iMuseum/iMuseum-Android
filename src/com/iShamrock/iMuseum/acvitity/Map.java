@@ -32,14 +32,14 @@ public class Map extends Activity{
         tabHost.addTab(tabHost.newTabSpec("floor4").setIndicator("floor4").setContent(R.id.map_layout_floor4));
         tabHost.setCurrentTab(0);
 
-//todo
         Activity activity = this;
         map_touch0 = (TextView) this.findViewById(R.id.map_touch0);
         map_touch0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(activity, Showroom.class);
+                intent.setClass(Map.this, Showroom.class);
+                intent.putExtra("name", "中国古代陶瓷馆");//TODO
                 startActivity(intent);
             }
         });

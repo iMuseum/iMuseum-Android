@@ -28,7 +28,6 @@
                 android:layout_height="290dp"
                 android:id="@+id/mainPic"
         />
-        <!--android:src="@drawable/pic1_homepage"-->
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -41,6 +40,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/showroomList" android:layout_gravity="center_horizontal"/>
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/hello" android:layout_gravity="top|right"
+                        android:src="@android:drawable/ic_menu_compass" android:layout_marginTop="-50dp"
+                />
             </LinearLayout>
         </LinearLayout>
         <!---->
