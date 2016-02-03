@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -16,7 +19,10 @@ import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.data.ShowroomData;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
+import com.iShamrock.iMuseum.util.ImageHandler;
+import com.iShamrock.iMuseum.util.ViewPagerAdapter;
 
+import java.lang.ref.WeakReference;
 import java.util.*;
 
 /**
@@ -26,6 +32,10 @@ public class Homepage extends Activity{
     private AnimationDrawable animationDrawable;
     private ImageView ivAnimView;
     private Animation animation;
+    private ImageButton imageButton;
+    public static final String LOG_TAG = "HOMEPAGE";
+    public ImageHandler handler = new ImageHandler(new WeakReference<Homepage>(this));
+    public ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,21 +43,84 @@ public class Homepage extends Activity{
         setContentView(R.layout.homepage);
         initLeftDrawer();
         //myz start here
-//        Button showPosition = (Button) findViewById(R.id.show);//TODO
+        /*
+        animation = AnimationUtils.loadAnimation(this, R.anim.translate_pic);
+        ivAnimView.setAnimation(animation);
+        animation.start();
+        animation.setRepeatCount(Animation.INFINITE);
+        ivAnimView.setVisibility(ImageView.VISIBLE);
+        */
         //pictures shown
+        /*
         ivAnimView = (ImageView) findViewById(R.id.mainPic);
-//        animation = AnimationUtils.loadAnimation(this, R.anim.translate_pic);
-//        ivAnimView.setAnimation(animation);
-//        animation.start();
-//        animation.setRepeatCount(Animation.INFINITE);
-//        ivAnimView.setVisibility(ImageView.VISIBLE);
         ivAnimView.setBackgroundResource(R.anim.homepage_news);
         Object backgroundObject = ivAnimView.getBackground();
         animationDrawable = (AnimationDrawable) backgroundObject;
         animationDrawable.stop();
         animationDrawable.start();
+        */
+
+        imageButton = (ImageButton) findViewById(R.id.hello);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent();
+//                intent.setClass(Homepage.this, Test.class);
+//                startActivity(intent);
+            }
+        });
 
         initShowroomList();
+        initViewPager();
+    }
+
+    private void initViewPager() {
+        viewPager = (ViewPager) findViewById(R.id.hp_viewpager);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        ImageView view1 = (ImageView) inflater.inflate(R.layout.viewpager_item, null);
+        ImageView view2 = (ImageView) inflater.inflate(R.layout.viewpager_item, null);
+        ImageView view3 = (ImageView) inflater.inflate(R.layout.viewpager_item, null);
+        ImageView view4 = (ImageView) inflater.inflate(R.layout.viewpager_item, null);
+        view1.setImageResource(R.drawable.pic1_homepage);
+        view2.setImageResource(R.drawable.pic2_homepage);
+        view3.setImageResource(R.drawable.pic3_homepage);
+        view4.setImageResource(R.drawable.pic4_homepage);
+        ArrayList<ImageView> views = new ArrayList<ImageView>();
+        views.add(view1);
+        views.add(view2);
+        views.add(view3);
+        views.add(view4);
+        viewPager.setAdapter(new ViewPagerAdapter(views));
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                handler.sendMessage(Message.obtain(handler, ImageHandler.MSG_PAGE_CHANGED, i, 0));
+            }
+
+            @Override //implement pause & resume
+            public void onPageScrollStateChanged(int i) {
+                switch (i) {
+                    case ViewPager.SCROLL_STATE_DRAGGING:
+                        handler.sendEmptyMessage(ImageHandler.MSG_PAUSE);
+                        break;
+                    case ViewPager.SCROLL_STATE_IDLE:
+                        handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+        //default initial: intermediate
+        viewPager.setCurrentItem(Integer.MAX_VALUE / 2);
+        //start
+        handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
     }
 
     private void initShowroomList() {
