@@ -59,9 +59,15 @@
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
                                     android:id="@+id/map_floor1" android:src="@drawable/floor1"/>
-                            <TextView android:layout_width="100dp" android:layout_height="100dp"
-                                      android:id="@+id/map_touch1" android:layout_marginLeft="150dp"
-                                      android:layout_marginTop="-200dp"/>
+                            <TextView android:layout_width="70dp" android:layout_height="70dp"
+                                      android:id="@+id/map_touch0" android:layout_marginLeft="60dp"
+                                      android:layout_marginTop="-300dp"/>
+                            <TextView android:layout_width="50dp" android:layout_height="60dp"
+                                      android:id="@+id/map_touch1" android:layout_marginLeft="60dp"
+                                      android:layout_marginTop="15dp"/>
+                            <TextView android:layout_width="50dp" android:layout_height="120dp"
+                                      android:id="@+id/map_touch2" android:layout_marginLeft="180dp"
+                                      android:layout_marginTop="-120dp"/>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
@@ -78,8 +84,12 @@
                                     android:layout_height="fill_parent"
                                     android:id="@+id/map_floor2" android:src="@drawable/floor2"/>
                             <TextView android:layout_width="100dp" android:layout_height="100dp"
-                                      android:id="@+id/map_touch0" android:layout_marginLeft="150dp"
-                                      android:layout_marginTop="-195dp" android:text="go->"
+                                      android:id="@+id/map_touch3" android:layout_marginLeft="150dp"
+                                      android:layout_marginTop="-195dp"
+                                      android:textColor="#ff425870"/>
+                            <TextView android:layout_width="50dp" android:layout_height="100dp"
+                                      android:id="@+id/map_touch4" android:layout_marginLeft="80dp"
+                                      android:layout_marginTop="-150dp"
                                       android:textColor="#ff425870"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -94,6 +104,18 @@
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
                                     android:id="@+id/map_floor3" android:src="@drawable/floor3"/>
+                            <TextView android:layout_width="100dp" android:layout_height="50dp"
+                                      android:id="@+id/map_touch5" android:layout_marginLeft="100dp"
+                                      android:layout_marginTop="-300dp"
+                                      android:textColor="#ff425870"/>
+                            <TextView android:layout_width="50dp" android:layout_height="80dp"
+                                      android:id="@+id/map_touch6" android:layout_marginLeft="80dp"
+                                      android:layout_marginTop="0dp"
+                                      android:textColor="#ff425870"/>
+                            <TextView android:layout_width="100dp" android:layout_height="50dp"
+                                      android:id="@+id/map_touch7" android:layout_marginLeft="120dp"
+                                      android:layout_marginTop="0dp"
+                                      android:textColor="#ff425870"/>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:id="@+id/tab4" android:layout_width="fill_parent"
@@ -104,6 +126,22 @@
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent"
                                     android:id="@+id/map_floor4" android:src="@drawable/floor4"/>
+                            <TextView android:layout_width="100dp" android:layout_height="40dp"
+                                      android:id="@+id/map_touch8" android:layout_marginLeft="120dp"
+                                      android:layout_marginTop="-295dp"
+                                      android:textColor="#ff425870"/>
+                            <TextView android:layout_width="50dp" android:layout_height="70dp"
+                                      android:id="@+id/map_touch9" android:layout_marginLeft="80dp"
+                                      android:layout_marginTop="0dp"
+                                      android:textColor="#ff425870"/>
+                            <TextView android:layout_width="50dp" android:layout_height="70dp"
+                                      android:id="@+id/map_touch10" android:layout_marginLeft="185dp"
+                                      android:layout_marginTop="-70dp"
+                                      android:textColor="#ff425870"/>
+                            <TextView android:layout_width="100dp" android:layout_height="40dp"
+                                      android:id="@+id/map_touch11" android:layout_marginLeft="120dp"
+                                      android:layout_marginTop="0dp"
+                                      android:textColor="#ff425870"/>
                         </LinearLayout>
                     </LinearLayout>
                 </FrameLayout>

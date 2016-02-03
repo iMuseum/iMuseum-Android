@@ -16,7 +16,8 @@ import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
  * Created by lifengshuang on 11/18/15.
  */
 public class Map extends Activity{
-    private TextView map_touch0;
+    private TextView[] map_touch;
+    private int map_showroom_num = 12;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +35,125 @@ public class Map extends Activity{
 
 //todo
         Activity activity = this;
-        map_touch0 = (TextView) this.findViewById(R.id.map_touch0);
-        map_touch0.setOnClickListener(new View.OnClickListener() {
+        map_touch = new TextView[map_showroom_num];
+        map_touch[0] = (TextView) this.findViewById(R.id.map_touch0);
+        map_touch[1] = (TextView) this.findViewById(R.id.map_touch1);
+        map_touch[2] = (TextView) this.findViewById(R.id.map_touch2);
+        map_touch[3] = (TextView) this.findViewById(R.id.map_touch3);
+        map_touch[4] = (TextView) this.findViewById(R.id.map_touch4);
+        map_touch[5] = (TextView) this.findViewById(R.id.map_touch5);
+        map_touch[6] = (TextView) this.findViewById(R.id.map_touch6);
+        map_touch[7] = (TextView) this.findViewById(R.id.map_touch7);
+        map_touch[8] = (TextView) this.findViewById(R.id.map_touch8);
+        map_touch[9] = (TextView) this.findViewById(R.id.map_touch9);
+        map_touch[10] = (TextView) this.findViewById(R.id.map_touch10);
+        map_touch[11] = (TextView) this.findViewById(R.id.map_touch11);
+
+        map_touch[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "第一展览馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[1].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国古代雕塑馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[2].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国古代青铜馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[3].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国古代陶瓷馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[4].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "第二展览馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[5].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国历代绘画馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[6].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国历代书法馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[7].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国历代玺印馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[8].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国少数民族工艺馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[9].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国历代钱币馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[10].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国历代玉器馆");
+                startActivity(intent);
+            }
+        });
+        map_touch[11].setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(activity, Showroom.class);
+                intent.putExtra("name", "中国明清家具馆");
                 startActivity(intent);
             }
         });

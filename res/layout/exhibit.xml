@@ -73,7 +73,7 @@
                 <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:id="@+id/exhibit_view" android:src="@drawable/dog" android:background="#ff88b9e9"/>
+                        android:id="@+id/exhibit_view" android:background="#ff88b9e9"/>
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="fill_parent"
