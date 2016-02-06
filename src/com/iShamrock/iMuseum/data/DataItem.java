@@ -29,6 +29,15 @@ public class DataItem {
         this.floor = floor;
     }
 
+    public DataItem(String name, int imgId, String description, String dynasty, String type, String author) {
+        this.name = name;
+        this.imgId = imgId;
+        this.description = description;
+        this.dynasty = dynasty;
+        this.type = type;
+        this.author = author;
+    }
+
     public DataItem id(int id) {
         this.id = id;
         return this;
