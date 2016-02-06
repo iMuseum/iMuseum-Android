@@ -36,6 +36,7 @@ public class ImageHandler extends Handler {
         }
         switch (msg.what) {
             case MSG_UPDATE_IMAGE:
+                activity.handler.removeMessages(ImageHandler.MSG_UPDATE_IMAGE);
                 currentItem++;
                 activity.viewPager.setCurrentItem(currentItem);
                 //cycle

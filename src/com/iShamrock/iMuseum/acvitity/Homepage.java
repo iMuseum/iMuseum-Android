@@ -107,10 +107,11 @@ public class Homepage extends Activity{
             public void onPageScrollStateChanged(int i) {
                 switch (i) {
                     case ViewPager.SCROLL_STATE_DRAGGING:
+                        handler.removeMessages(ImageHandler.MSG_UPDATE_IMAGE);
                         handler.sendEmptyMessage(ImageHandler.MSG_PAUSE);
                         break;
-                    case ViewPager.SCROLL_STATE_IDLE:
-//                        handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
+                    case ViewPager.SCROLL_STATE_SETTLING:
+                        handler.sendEmptyMessageDelayed(ImageHandler.MSG_RESUME, ImageHandler.MSG_DELAY);
                         break;
                     default:
                         break;
