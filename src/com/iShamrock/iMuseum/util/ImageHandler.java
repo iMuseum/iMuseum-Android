@@ -38,7 +38,7 @@ public class ImageHandler extends Handler {
             case MSG_UPDATE_IMAGE:
                 currentItem++;
                 activity.viewPager.setCurrentItem(currentItem);
-                //next time update
+                //cycle
                 activity.handler.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
                 break;
             case MSG_PAUSE:

@@ -110,7 +110,7 @@ public class Homepage extends Activity{
                         handler.sendEmptyMessage(ImageHandler.MSG_PAUSE);
                         break;
                     case ViewPager.SCROLL_STATE_IDLE:
-                        handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
+//                        handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
                         break;
                     default:
                         break;

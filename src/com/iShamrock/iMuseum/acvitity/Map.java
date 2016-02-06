@@ -33,7 +33,6 @@ public class Map extends Activity{
         tabHost.addTab(tabHost.newTabSpec("floor4").setIndicator("floor4").setContent(R.id.map_layout_floor4));
         tabHost.setCurrentTab(0);
 
-//todo
         Activity activity = this;
         map_touch = new TextView[map_showroom_num];
         map_touch[0] = (TextView) this.findViewById(R.id.map_touch0);
