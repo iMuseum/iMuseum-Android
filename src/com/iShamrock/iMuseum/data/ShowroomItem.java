@@ -2,6 +2,8 @@ package com.iShamrock.iMuseum.data;
 
 import com.iShamrock.iMuseum.acvitity.Showroom;
 
+import java.util.List;
+
 /**
  * Created by mayezhou on 16/1/29.
  */
@@ -11,15 +13,17 @@ public class ShowroomItem {
 //    private int imgId;
     private String englishName;
     private int floor;
+    private List<DataItem> exhibits;
 
     public ShowroomItem() {
 
     }
 
-    public ShowroomItem(String name, String englishName, int floor) {
+    public ShowroomItem(String name, String englishName, int floor, List<DataItem> exhibits) {
         this.name = name;
         this.englishName = englishName;
         this.floor = floor;
+        this.exhibits = exhibits;
     }
 
     public String getName() {
@@ -47,5 +51,13 @@ public class ShowroomItem {
     public ShowroomItem setFloor(int floor) {
         this.floor = floor;
         return this;
+    }
+
+    public List<DataItem> getExhibits() {
+        return exhibits;
+    }
+
+    public void setExhibits(List<DataItem> exhibits) {
+        this.exhibits = exhibits;
     }
 }

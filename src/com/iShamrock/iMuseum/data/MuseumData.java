@@ -1,7 +1,12 @@
 package com.iShamrock.iMuseum.data;
 
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.util.XmlParser;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -12,9 +17,26 @@ public class MuseumData {
     private static ArrayList<DataItem> data;
     private static Set<Integer> favors;
     private static int id;
+    private static List<ShowroomItem> exhibitionHalls;
 
-    public static ArrayList<DataItem> getAllData() {
-        return data;
+    static {
+        try {
+            FileInputStream inputStream = new FileInputStream("res/values/exhibit.xml");
+            exhibitionHalls = new XmlParser().parse(inputStream);
+            for (ShowroomItem exhibitionHall : exhibitionHalls) {
+                data.addAll(exhibitionHall.getExhibits());
+            }
+            for (int i = 0; i < data.size(); i++) {
+                data.get(i).id(i);
+                //TODO input into xml
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        favors = new HashSet<>();
+        //todo: following two lines should be deleted when release
+        addFavorItem(0);
+        addFavorItem(2);
     }
 
     public static List<Map<String, Object>> getFavorData() {
@@ -59,6 +81,7 @@ public class MuseumData {
         return item;
     }
 
+    /*
     static {
         data = new ArrayList<>();
         favors = new HashSet<>();
@@ -99,10 +122,11 @@ public class MuseumData {
                         "    波内家族居住在伯克郡温莎，于1661年5月获得这一纹章。家族中有多名成员在东印度公司任职。传世器皿中，共有三套这个家族订制的纹章瓷器。\n" +
                         "    此盆应该是成套餐具中的汤盆，是西方人用餐时盛汤的器皿，十八世纪中期，外销瓷中成套餐具的数量增加，汤盆开始流行，在一套餐具中，汤盆往往是最为华丽，器形最复杂的器皿，有各类仿银器及动物造型。此件汤盆式样虽简，但纹样繁复，通体以金彩装饰，亦在整套餐具中最显夺目。");
 
-        //todo: following two lines should be deleted when release
+
         addFavorItem(0);
         addFavorItem(2);
     }
+    */
 
     public static boolean isFavored(int id) {
         boolean isFavored = false;
@@ -114,6 +138,20 @@ public class MuseumData {
 
     public static List<Map<String, Object>> getShowroomData(String showroom) {
         List<Map<String, Object>> list = new LinkedList<>();
+        for (ShowroomItem exhibitionHall : exhibitionHalls) {
+            if (exhibitionHall.getName().equals(showroom)) {
+                for (DataItem item : exhibitionHall.getExhibits()) {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("id", item.getId());
+                    map.put("name", item.getName());
+                    map.put("description", item.getDescription().length() >= 80
+                            ? item.getDescription().substring(0, 80) + "..." : item.getDescription());
+                    map.put("img", item.getImgId());
+                    list.add(map);
+                }
+            }
+        }
+        /*
         for (DataItem item : data) {
             if (item.getLocation().equals(showroom)) {
                 Map<String, Object> map = new HashMap<>();
@@ -125,6 +163,7 @@ public class MuseumData {
                 list.add(map);
             }
         }
+        */
         return list;
     }
 }

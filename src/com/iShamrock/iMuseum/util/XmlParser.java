@@ -2,6 +2,7 @@ package com.iShamrock.iMuseum.util;
 
 import android.util.Xml;
 import com.iShamrock.iMuseum.data.DataItem;
+import com.iShamrock.iMuseum.data.ShowroomItem;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -17,7 +18,7 @@ public class XmlParser {
     //do not use namespaces
     private static final String namespace = null;
 
-    public List<DataItem> parse(InputStream in) throws XmlPullParserException, IOException {
+    public List<ShowroomItem> parse(InputStream in) throws XmlPullParserException, IOException {
         try {
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
@@ -30,24 +31,60 @@ public class XmlParser {
         }
     }
 
-    private List<DataItem> readData(XmlPullParser parser) throws XmlPullParserException, IOException {
-        List<DataItem> exhibits = new ArrayList<DataItem>();
-        parser.require(XmlPullParser.START_TAG, namespace, "exhibitionHall");
-        while (parser.next() != XmlPullParser.END_TAG) {
+    private List<ShowroomItem> readData(XmlPullParser parser) throws XmlPullParserException, IOException {
+        List<ShowroomItem> exhibitionHalls = new ArrayList<ShowroomItem>();
+        String name = null;
+        String englishName = null;
+        String floor = null;
+        parser.require(XmlPullParser.START_TAG, namespace, "resources");
+        while (parser.next() != XmlPullParser.END_DOCUMENT) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
             String tag = parser.getName();
-            //TODO  name/englishName/floor of exhitionHall
-            //start by looking for the exhibit tag
-            if (tag.equals("exhibit")) {
-                exhibits.add(readExhibit(parser));
+            //start by looking for the exhibitionHall tag
+            if (tag.equals("exhibitionHall")) {
+                exhibitionHalls.add(readExhibitionHall(parser));
             }
             else {
                 skip(parser);
             }
         }
-        return exhibits;
+        return exhibitionHalls;
+    }
+
+    private ShowroomItem readExhibitionHall(XmlPullParser parser) throws XmlPullParserException, IOException {
+        List<DataItem> exhibits = new ArrayList<DataItem>();
+        String name = null;
+        String englishName = null;
+        String floor = null;
+        parser.require(XmlPullParser.START_TAG, namespace, "exhibitionHall");
+        while (parser.next() != XmlPullParser.END_DOCUMENT) {
+            if (parser.getEventType() != XmlPullParser.START_TAG) {
+                continue;
+            }
+            String tag = parser.getName();
+            switch (tag) {
+                case "name":
+                    name = readText(parser, tag);
+                    break;
+                case "englishName":
+                    englishName = readText(parser, tag);
+                    break;
+                case "floor":
+                    floor = readText(parser, tag);
+                    break;
+                case "exhibit":
+                    exhibits.add(readExhibit(parser));
+                    exhibits.get(exhibits.size()-1).floor(Integer.parseInt(floor)).location(name);
+                    break;
+                default:
+                    skip(parser);
+                    break;
+            }
+        }
+        ShowroomItem exhibitionHall = new ShowroomItem(name, englishName,Integer.parseInt(floor), exhibits);
+        return exhibitionHall;
     }
 
     private DataItem readExhibit(XmlPullParser parser) throws XmlPullParserException, IOException {
@@ -59,7 +96,7 @@ public class XmlParser {
         String author = null;
         String description = null;
         //TODO id++
-        while (parser.next() != XmlPullParser.END_TAG) {
+        while (parser.next() != XmlPullParser.END_DOCUMENT) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
@@ -101,7 +138,7 @@ public class XmlParser {
         String result = "";
         if (parser.next() == XmlPullParser.TEXT) {
             result = parser.getText();
-            parser.nextTag();
+            parser.nextTag();//skip the end tag
         }
         return result;
     }
