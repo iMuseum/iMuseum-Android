@@ -56,7 +56,7 @@ public class XmlParser {
         String englishName = null;
         String floor = null;
         parser.require(XmlPullParser.START_TAG, namespace, "exhibitionHall");
-        while (parser.next() != XmlPullParser.END_DOCUMENT) {
+        while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }
@@ -94,8 +94,7 @@ public class XmlParser {
         String type = null;
         String author = null;
         String description = null;
-        //TODO id++
-        while (parser.next() != XmlPullParser.END_DOCUMENT) {
+        while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
                 continue;
             }

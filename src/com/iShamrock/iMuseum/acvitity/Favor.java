@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.data.DataItem;
-import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.data.ShowroomItem;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
@@ -26,7 +25,7 @@ import java.util.Map;
  * Created by lifengshuang on 11/18/15.
  */
 public class Favor extends Activity {
-    private static Set<Integer> favors = MuseumData.favors;
+    private static Set<Integer> favors = new HashSet<>();
     private InputStream inputStream;
     private ArrayList<DataItem> data;
     private List<ShowroomItem> exhibitionHalls;
@@ -36,7 +35,6 @@ public class Favor extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favor);
         initLeftDrawer();
-        initFavorList();
 
         inputStream = this.getResources().openRawResource(R.raw.exhibit);
 
@@ -61,6 +59,8 @@ public class Favor extends Activity {
         //todo: following two lines should be deleted when release
         addFavorItem(0);
         addFavorItem(2);
+
+        initFavorList();
     }
 
     private void initFavorList() {
@@ -79,6 +79,8 @@ public class Favor extends Activity {
                 startActivity(intent);
             }
         });
+
+        initFavorList();
     }
 
     private void initLeftDrawer() {
@@ -117,19 +119,27 @@ public class Favor extends Activity {
                 map.put("location", item.getLocation() + " (" + item.getFloor() + "楼)");
                 map.put("description", item.getDescription().length() >= 80
                         ? item.getDescription().substring(0, 80) + "..." : item.getDescription());
-                map.put("img", item.getImgId());
+                String drawable = item.getImgId();
+                int res = getResources().getIdentifier(drawable, "drawable", getPackageName());
+                map.put("img", res);
                 list.add(map);
             }
         }
         return list;
     }
 
-
-    private void addFavorItem(int id) {
+    public static boolean isFavored(int id) {
+        boolean isFavored = false;
+        if (favors.contains(id)) {
+            isFavored = true;
+        }
+        return isFavored;
+    }
+    public static void addFavorItem(int id) {
         favors.add(id);
     }
 
-    private void deleteFavorItem(int id) {
+    public static void deleteFavorItem(int id) {
         favors.remove(id);
     }
 }

@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.data.DataItem;
-import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.data.ShowroomItem;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
@@ -29,8 +28,7 @@ public class Showroom extends Activity{
     private TextView showroom_title;
     private String showroom;
     private InputStream inputStream;
-    private ArrayList<DataItem> data;
-    private int id;
+    private static ArrayList<DataItem> data;
     private List<ShowroomItem> exhibitionHalls;
 
     @Override
@@ -43,8 +41,8 @@ public class Showroom extends Activity{
         showroom = bundle.getString("name");
         showroom_title = (TextView) this.findViewById(R.id.showroom_title);
         showroom_title.setText(showroom);
+
         inputStream = this.getResources().openRawResource(R.raw.exhibit);
-        initShowroomList();
 
         //get data
         try {
@@ -60,9 +58,12 @@ public class Showroom extends Activity{
         for (ShowroomItem exhibitionHall : exhibitionHalls) {
             data.addAll(exhibitionHall.getExhibits());
         }
+        //set the id of exhibit
         for (int i = 0; i < data.size(); i++) {
             data.get(i).id(i);
         }
+
+        initShowroomList();
     }
 
     private void initShowroomList() {
@@ -131,4 +132,12 @@ public class Showroom extends Activity{
         return list;
     }
 
+    public static DataItem getDataById(int id) {
+        for (DataItem item : data) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
 }
