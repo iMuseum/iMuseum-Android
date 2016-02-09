@@ -17,53 +17,11 @@ import java.util.*;
 /**
  * Created by lifengshuang on 11/25/15.
  */
-public class MuseumData {
-
+public class MuseumData{
     private static ArrayList<DataItem> data;
-    private static Set<Integer> favors;
+    public static Set<Integer> favors = new HashSet<>();
     private static int id;
     private static List<ShowroomItem> exhibitionHalls;
-    private static InputStream inputStream = Showroom.inputStream;
-
-     static {
-         try {
-             exhibitionHalls = new XmlParser().parse(inputStream);
-         } catch (FileNotFoundException e) {
-             e.printStackTrace();
-         } catch (XmlPullParserException e) {
-             e.printStackTrace();
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
-         for (ShowroomItem exhibitionHall : exhibitionHalls) {
-             data.addAll(exhibitionHall.getExhibits());
-         }
-         for (int i = 0; i < data.size(); i++) {
-             data.get(i).id(i);
-             //TODO input into xml
-         }
-        favors = new HashSet<>();
-        //todo: following two lines should be deleted when release
-        addFavorItem(0);
-        addFavorItem(2);
-    }
-
-    public static List<Map<String, Object>> getFavorData() {
-        List<Map<String, Object>> list = new LinkedList<>();
-        for (DataItem item : data) {
-            if (favors.contains(item.getId())) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("id", item.getId());
-                map.put("name", item.getName());
-                map.put("location", item.getLocation() + " (" + item.getFloor() + "楼)");
-                map.put("description", item.getDescription().length() >= 80
-                        ? item.getDescription().substring(0, 80) + "..." : item.getDescription());
-                map.put("img", item.getImgId());
-                list.add(map);
-            }
-        }
-        return list;
-    }
 
     public static DataItem getDataById(int id) {
         for (DataItem item : data) {
@@ -82,6 +40,7 @@ public class MuseumData {
         favors.remove(id);
     }
 
+    /*
     private static DataItem getNewDataItemInstance() {
         DataItem item = new DataItem();
         item.id(id);
@@ -89,6 +48,7 @@ public class MuseumData {
         data.add(item);
         return item;
     }
+    */
 
     /*
     static {
@@ -139,40 +99,10 @@ public class MuseumData {
 
     public static boolean isFavored(int id) {
         boolean isFavored = false;
-        if(favors.contains(id)){
+        if (favors.contains(id)) {
             isFavored = true;
         }
         return isFavored;
     }
 
-    public static List<Map<String, Object>> getShowroomData(String showroom) {
-        List<Map<String, Object>> list = new LinkedList<>();
-        for (ShowroomItem exhibitionHall : exhibitionHalls) {
-            if (exhibitionHall.getName().equals(showroom)) {
-                for (DataItem item : exhibitionHall.getExhibits()) {
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("id", item.getId());
-                    map.put("name", item.getName());
-                    map.put("description", item.getDescription().length() >= 80
-                            ? item.getDescription().substring(0, 80) + "..." : item.getDescription());
-                    map.put("img", item.getImgId());
-                    list.add(map);
-                }
-            }
-        }
-        /*
-        for (DataItem item : data) {
-            if (item.getLocation().equals(showroom)) {
-                Map<String, Object> map = new HashMap<>();
-                map.put("id", item.getId());
-                map.put("name", item.getName());
-                map.put("description", item.getDescription().length() >= 80
-                        ? item.getDescription().substring(0, 80) + "..." : item.getDescription());
-                map.put("img", item.getImgId());
-                list.add(map);
-            }
-        }
-        */
-        return list;
-    }
 }

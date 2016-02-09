@@ -43,7 +43,9 @@ public class Exhibit extends Activity{
         /* set the title of the exhibit as the name */
         exhibit_name.setText(exhibit.getName());
         /* set the image of the exhibit */
-        exhibit_view.setImageDrawable(getResources().getDrawable(exhibit.getImgId()));
+        String drawableName = exhibit.getImgId();
+        int res = getResources().getIdentifier(drawableName, "drawable", getPackageName());
+        exhibit_view.setImageDrawable(getResources().getDrawable(res));
         /* set the hall of the exhibit */
         exhibit_hall.setText("Exhibition Hall: " + exhibit.getLocation());
         /* set the introduce of the exhibit */

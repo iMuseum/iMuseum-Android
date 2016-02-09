@@ -8,12 +8,19 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.data.DataItem;
 import com.iShamrock.iMuseum.data.MuseumData;
+import com.iShamrock.iMuseum.data.ShowroomItem;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
+import com.iShamrock.iMuseum.util.XmlParser;
+import org.xmlpull.v1.XmlPullParserException;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.Map;
 
 /**
  * Created by wangxin on 16/1/27.
@@ -21,7 +28,10 @@ import java.util.*;
 public class Showroom extends Activity{
     private TextView showroom_title;
     private String showroom;
-    public static InputStream inputStream;
+    private InputStream inputStream;
+    private ArrayList<DataItem> data;
+    private int id;
+    private List<ShowroomItem> exhibitionHalls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +45,29 @@ public class Showroom extends Activity{
         showroom_title.setText(showroom);
         inputStream = this.getResources().openRawResource(R.raw.exhibit);
         initShowroomList();
+
+        //get data
+        try {
+            exhibitionHalls = new XmlParser().parse(inputStream);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        data = new ArrayList<>();
+        for (ShowroomItem exhibitionHall : exhibitionHalls) {
+            data.addAll(exhibitionHall.getExhibits());
+        }
+        for (int i = 0; i < data.size(); i++) {
+            data.get(i).id(i);
+        }
     }
 
     private void initShowroomList() {
         ListView showroomList = (ListView) findViewById(R.id.list_showroom);
-        List<java.util.Map<String, Object>> data = MuseumData.getShowroomData(showroom);
+        List<java.util.Map<String, Object>> data = getShowroomData(showroom);
 
         showroomList.setAdapter(new SimpleAdapter(this, data,
                 R.layout.showroom_item, new String[]{"name", "img", "description"},
@@ -82,4 +110,25 @@ public class Showroom extends Activity{
         };
         drawerLayout.setDrawerListener(toggle);
     }
+
+    private List<java.util.Map<String, Object>> getShowroomData(String showroom) {
+        List<java.util.Map<String, Object>> list = new LinkedList<>();
+        for (ShowroomItem exhibitionHall : exhibitionHalls) {
+            if (exhibitionHall.getName().equals(showroom)) {
+                for (DataItem item : exhibitionHall.getExhibits()) {
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("id", item.getId());
+                    map.put("name", item.getName());
+                    map.put("description", item.getDescription().length() >= 80
+                            ? item.getDescription().substring(0, 80) + "..." : item.getDescription());
+                    String drawableName = item.getImgId();
+                    int res = getResources().getIdentifier(drawableName, "drawable", getPackageName());
+                    map.put("img", res);
+                    list.add(map);
+                }
+            }
+        }
+        return list;
+    }
+
 }

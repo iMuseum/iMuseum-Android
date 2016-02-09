@@ -73,7 +73,9 @@ public class XmlParser {
                     break;
                 case "exhibit":
                     exhibits.add(readExhibit(parser));
-                    exhibits.get(exhibits.size()-1).floor(Integer.parseInt(floor)).location(name);
+                    exhibits.get(exhibits.size()-1).
+                            floor(Integer.parseInt(floor)).
+                            location(name);
                     break;
                 default:
                     skip(parser);
@@ -103,7 +105,7 @@ public class XmlParser {
                     name = readText(parser, tag);
                     break;
                 case "imgId" :
-                    imgId = "R.drawable." + readText(parser, tag);
+                    imgId = readText(parser, tag);
                     break;
                 case "dynasty" :
                     dynasty = readText(parser, tag);
