@@ -1,12 +1,17 @@
 package com.iShamrock.iMuseum.data;
 
+import android.app.Activity;
+import android.content.Context;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.acvitity.Showroom;
 import com.iShamrock.iMuseum.util.XmlParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.*;
 
 /**
@@ -18,21 +23,25 @@ public class MuseumData {
     private static Set<Integer> favors;
     private static int id;
     private static List<ShowroomItem> exhibitionHalls;
+    private static InputStream inputStream = Showroom.inputStream;
 
-    static {
-        try {
-            FileInputStream inputStream = new FileInputStream("res/values/exhibit.xml");
-            exhibitionHalls = new XmlParser().parse(inputStream);
-            for (ShowroomItem exhibitionHall : exhibitionHalls) {
-                data.addAll(exhibitionHall.getExhibits());
-            }
-            for (int i = 0; i < data.size(); i++) {
-                data.get(i).id(i);
-                //TODO input into xml
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+     static {
+         try {
+             exhibitionHalls = new XmlParser().parse(inputStream);
+         } catch (FileNotFoundException e) {
+             e.printStackTrace();
+         } catch (XmlPullParserException e) {
+             e.printStackTrace();
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+         for (ShowroomItem exhibitionHall : exhibitionHalls) {
+             data.addAll(exhibitionHall.getExhibits());
+         }
+         for (int i = 0; i < data.size(); i++) {
+             data.get(i).id(i);
+             //TODO input into xml
+         }
         favors = new HashSet<>();
         //todo: following two lines should be deleted when release
         addFavorItem(0);

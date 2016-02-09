@@ -12,6 +12,7 @@ import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 
+import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -20,6 +21,7 @@ import java.util.*;
 public class Showroom extends Activity{
     private TextView showroom_title;
     private String showroom;
+    public static InputStream inputStream;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +29,18 @@ public class Showroom extends Activity{
         setContentView(R.layout.showroom);
         initLeftDrawer();
         /* get the showroom of this exhibit */
-         Bundle bundle = this.getIntent().getExtras();
+        Bundle bundle = this.getIntent().getExtras();
         showroom = bundle.getString("name");
         showroom_title = (TextView) this.findViewById(R.id.showroom_title);
         showroom_title.setText(showroom);
+        inputStream = this.getResources().openRawResource(R.raw.exhibit);
         initShowroomList();
     }
 
     private void initShowroomList() {
         ListView showroomList = (ListView) findViewById(R.id.list_showroom);
         List<java.util.Map<String, Object>> data = MuseumData.getShowroomData(showroom);
+
         showroomList.setAdapter(new SimpleAdapter(this, data,
                 R.layout.showroom_item, new String[]{"name", "img", "description"},
                 new int[]{R.id.showroom_list_name, R.id.showroom_list_img, R.id.showroom_list_description}));

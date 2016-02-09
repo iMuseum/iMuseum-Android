@@ -33,9 +33,6 @@ public class XmlParser {
 
     private List<ShowroomItem> readData(XmlPullParser parser) throws XmlPullParserException, IOException {
         List<ShowroomItem> exhibitionHalls = new ArrayList<ShowroomItem>();
-        String name = null;
-        String englishName = null;
-        String floor = null;
         parser.require(XmlPullParser.START_TAG, namespace, "resources");
         while (parser.next() != XmlPullParser.END_DOCUMENT) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -124,7 +121,7 @@ public class XmlParser {
                     break;
             }
         }
-        return new DataItem(name, Integer.parseInt(imgId), description, dynasty, type, author);
+        return new DataItem(name, imgId, description, dynasty, type, author);
     }
 
     private String readText(XmlPullParser parser, String tag) throws IOException, XmlPullParserException {
