@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.data.DataItem;
+import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 
@@ -34,7 +35,7 @@ public class Exhibit extends Activity{
         int id = bundle.getInt("id");
 
         /* get the information of this exhibit */
-        DataItem exhibit = Showroom.getDataById(id);
+        DataItem exhibit = MuseumData.getDataById(id);
         TextView exhibit_name = (TextView) this.findViewById(R.id.exhibit_name);
         ImageView exhibit_view = (ImageView) this.findViewById(R.id.exhibit_view);
         TextView exhibit_hall = (TextView) this.findViewById(R.id.exhibit_hall);
@@ -51,7 +52,7 @@ public class Exhibit extends Activity{
         exhibit_introduce.setText("朝代：" + exhibit.getDynasty() + "  类型：" + exhibit.getType() + "\n" + exhibit.getDescription());
         Activity activity = this;
 
-        isLiked = Favor.isFavored(id);
+        isLiked = MuseumData.isFavored(id);
         likeLayout = (LinearLayout)this.findViewById(R.id.likeLayout);
         back = (ImageButton)this.findViewById(R.id.exhibit_back);
         like = (ImageButton)this.findViewById(R.id.exhibit_like);
@@ -75,12 +76,12 @@ public class Exhibit extends Activity{
             public void onClick(View view) {
                 if(!isLiked) {
                     like.setImageDrawable(getResources().getDrawable(R.drawable.liked));
-                    Favor.addFavorItem(id);
+                    MuseumData.addFavorItem(id);
                     isLiked = true;
                 }
                 else {
                     like.setImageDrawable(getResources().getDrawable(R.drawable.likeit));
-                    Favor.deleteFavorItem(id);
+                    MuseumData.deleteFavorItem(id);
                     isLiked = false;
                 }
             }
