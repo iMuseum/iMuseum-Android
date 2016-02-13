@@ -6,7 +6,7 @@ package com.iShamrock.iMuseum.data;
 public class DataItem {
     private int id;
     private String name;
-    private int imgId;
+    private String imgId;
     private String description;
     private String dynasty;
     private String type;
@@ -17,7 +17,7 @@ public class DataItem {
     public DataItem() {
     }
 
-    public DataItem(int id, String name, int imgId, String description, String dynasty, String type, String author, String location, int floor) {
+    public DataItem(int id, String name, String imgId, String description, String dynasty, String type, String author, String location, int floor) {
         this.id = id;
         this.name = name;
         this.imgId = imgId;
@@ -27,6 +27,15 @@ public class DataItem {
         this.author = author;
         this.location = location;
         this.floor = floor;
+    }
+
+    public DataItem(String name, String imgId, String description, String dynasty, String type, String author) {
+        this.name = name;
+        this.imgId = imgId;
+        this.description = description;
+        this.dynasty = dynasty;
+        this.type = type;
+        this.author = author;
     }
 
     public DataItem id(int id) {
@@ -39,7 +48,7 @@ public class DataItem {
         return this;
     }
 
-    public DataItem imgId(int imgId) {
+    public DataItem imgId(String imgId) {
         this.imgId = imgId;
         return this;
     }
@@ -82,7 +91,7 @@ public class DataItem {
         return name;
     }
 
-    public int getImgId() {
+    public String getImgId() {
         return imgId;
     }
 

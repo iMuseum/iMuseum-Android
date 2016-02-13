@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.data.DataItem;
-import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 
@@ -35,7 +34,7 @@ public class Exhibit extends Activity{
         int id = bundle.getInt("id");
 
         /* get the information of this exhibit */
-        DataItem exhibit = MuseumData.getDataById(id);
+        DataItem exhibit = Showroom.getDataById(id);
         TextView exhibit_name = (TextView) this.findViewById(R.id.exhibit_name);
         ImageView exhibit_view = (ImageView) this.findViewById(R.id.exhibit_view);
         TextView exhibit_hall = (TextView) this.findViewById(R.id.exhibit_hall);
@@ -43,14 +42,16 @@ public class Exhibit extends Activity{
         /* set the title of the exhibit as the name */
         exhibit_name.setText(exhibit.getName());
         /* set the image of the exhibit */
-        exhibit_view.setImageDrawable(getResources().getDrawable(exhibit.getImgId()));
+        String drawableName = exhibit.getImgId();
+        int res = getResources().getIdentifier(drawableName, "drawable", getPackageName());
+        exhibit_view.setImageDrawable(getResources().getDrawable(res));
         /* set the hall of the exhibit */
         exhibit_hall.setText("Exhibition Hall: " + exhibit.getLocation());
         /* set the introduce of the exhibit */
         exhibit_introduce.setText("朝代：" + exhibit.getDynasty() + "  类型：" + exhibit.getType() + "\n" + exhibit.getDescription());
         Activity activity = this;
 
-        isLiked = MuseumData.isFavored(id);
+        isLiked = Favor.isFavored(id);
         likeLayout = (LinearLayout)this.findViewById(R.id.likeLayout);
         back = (ImageButton)this.findViewById(R.id.exhibit_back);
         like = (ImageButton)this.findViewById(R.id.exhibit_like);
@@ -74,12 +75,12 @@ public class Exhibit extends Activity{
             public void onClick(View view) {
                 if(!isLiked) {
                     like.setImageDrawable(getResources().getDrawable(R.drawable.liked));
-                    MuseumData.addFavorItem(id);
+                    Favor.addFavorItem(id);
                     isLiked = true;
                 }
                 else {
                     like.setImageDrawable(getResources().getDrawable(R.drawable.likeit));
-                    MuseumData.deleteFavorItem(id);
+                    Favor.deleteFavorItem(id);
                     isLiked = false;
                 }
             }

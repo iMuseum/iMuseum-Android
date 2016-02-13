@@ -8,14 +8,11 @@ import android.os.Message;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
-import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.data.ShowroomData;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
@@ -107,10 +104,11 @@ public class Homepage extends Activity{
             public void onPageScrollStateChanged(int i) {
                 switch (i) {
                     case ViewPager.SCROLL_STATE_DRAGGING:
+                        handler.removeMessages(ImageHandler.MSG_UPDATE_IMAGE);
                         handler.sendEmptyMessage(ImageHandler.MSG_PAUSE);
                         break;
-                    case ViewPager.SCROLL_STATE_IDLE:
-                        handler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
+                    case ViewPager.SCROLL_STATE_SETTLING:
+                        handler.sendEmptyMessageDelayed(ImageHandler.MSG_RESUME, ImageHandler.MSG_DELAY);
                         break;
                     default:
                         break;

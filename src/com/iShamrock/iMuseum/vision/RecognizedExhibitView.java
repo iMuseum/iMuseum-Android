@@ -9,9 +9,6 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import com.iShamrock.iMuseum.acvitity.Exhibit;
-import com.iShamrock.iMuseum.acvitity.Map;
-import com.iShamrock.iMuseum.data.DataItem;
-import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.entity.RecognizedExhibit;
 
 import java.util.ArrayList;
