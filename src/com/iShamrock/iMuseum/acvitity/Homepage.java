@@ -67,6 +67,7 @@ public class Homepage extends Activity{
             }
         });
 
+
         initShowroomList();
         initViewPager();
     }

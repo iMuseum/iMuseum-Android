@@ -80,7 +80,6 @@ public class Favor extends Activity {
             }
         });
 
-        initFavorList();
     }
 
     private void initLeftDrawer() {
