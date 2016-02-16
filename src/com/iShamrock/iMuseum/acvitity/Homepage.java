@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.data.ShowroomData;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
@@ -26,9 +27,9 @@ import java.util.*;
  * Created by lifengshuang on 11/18/15.
  */
 public class Homepage extends Activity{
-    private AnimationDrawable animationDrawable;
-    private ImageView ivAnimView;
-    private Animation animation;
+//    private AnimationDrawable animationDrawable;
+//    private ImageView ivAnimView;
+//    private Animation animation;
     private ImageButton imageButton;
     public static final String LOG_TAG = "HOMEPAGE";
     public ImageHandler handler = new ImageHandler(new WeakReference<Homepage>(this));
@@ -38,6 +39,7 @@ public class Homepage extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
+        MuseumData.initData(this);
         initLeftDrawer();
         //myz start here
         /*
@@ -47,7 +49,7 @@ public class Homepage extends Activity{
         animation.setRepeatCount(Animation.INFINITE);
         ivAnimView.setVisibility(ImageView.VISIBLE);
         */
-        //pictures shown
+
         /*
         ivAnimView = (ImageView) findViewById(R.id.mainPic);
         ivAnimView.setBackgroundResource(R.anim.homepage_news);
@@ -66,6 +68,7 @@ public class Homepage extends Activity{
 //                startActivity(intent);
             }
         });
+
 
         initShowroomList();
         initViewPager();
@@ -123,7 +126,7 @@ public class Homepage extends Activity{
 
     private void initShowroomList() {
         ListView showroomList = (ListView) findViewById(R.id.showroomList);
-        List<java.util.Map<String, Object>> data = ShowroomData.getShowroomData();
+        List<java.util.Map<String, Object>> data = MuseumData.getShowroomList();
         showroomList.setAdapter(new SimpleAdapter(this, data,
                 R.layout.homepage_listview, new String[]{"name", "englishName", "location"},
                 new int[]{R.id.showroom_name, R.id.showroom_englishName, R.id.showroom_location}));
