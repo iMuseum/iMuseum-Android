@@ -1,6 +1,7 @@
-package com.iShamrock.iMuseum.data;
+package com.iShamrock.iMuseum.obsolete;
 
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.data.ShowroomItem;
 
 import java.util.*;
 
