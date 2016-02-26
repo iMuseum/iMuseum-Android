@@ -1,7 +1,6 @@
-package com.iShamrock.iMuseum.obsolete;
+package com.iShamrock.iMuseum.data;
 
 import com.iShamrock.iMuseum.R;
-import com.iShamrock.iMuseum.data.ShowroomItem;
 
 import java.util.*;
 
@@ -43,10 +42,6 @@ public class ShowroomData {
                 .setEnglishName("Gallery of Chinese Ancient Ceramics")
                 .setFloor(2);
         data.add(i5);
-    }
-
-    public static ArrayList<ShowroomItem> getShowroomList() {
-        return data;
     }
 
     public static List<Map<String, Object>> getShowroomData() {
