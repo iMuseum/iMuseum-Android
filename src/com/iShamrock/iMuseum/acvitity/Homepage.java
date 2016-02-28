@@ -63,9 +63,9 @@ public class Homepage extends Activity{
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent();
-//                intent.setClass(Homepage.this, Navigation.class);
-//                startActivity(intent);
+                Intent intent = new Intent();
+                intent.setClass(Homepage.this, Navigation.class);
+                startActivity(intent);
             }
         });
 

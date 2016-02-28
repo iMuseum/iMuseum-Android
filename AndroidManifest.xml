@@ -21,7 +21,7 @@
         <activity android:name=".acvitity.Navigation"/>
         <activity android:name=".acvitity.ExhibitionHallOfFloor"/>
         <!--LBS key-->
-        <!--<meta-data android:name="ids_key" android:value="2AD3C846C3BE52FF562F863F8270F021"/>-->
+        <meta-data android:name="ids_key" android:value="2AD3C846C3BE52FF562F863F8270F021"/>
     </application>
 
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
@@ -30,11 +30,11 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <!--LBS-->
-    <!--<uses-feature android:glEsVersion="0x00020000" android:required="true"/>-->
-    <!--<uses-permission android:name="android.permission.INTERNET"/>-->
-    <!--<uses-permission android:name="android.permission.BLUETOOTH"/>-->
-    <!--<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>-->
-    <!--<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>-->
-    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>-->
-    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE"/>-->
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 </manifest>
