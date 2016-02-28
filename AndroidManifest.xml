@@ -18,7 +18,7 @@
         <activity android:name=".acvitity.Favor"/>
         <activity android:name=".acvitity.Exhibit"/>
         <activity android:name=".acvitity.Showroom"/>
-        <!--<activity android:name=".acvitity.Navigation"/>-->
+        <activity android:name=".acvitity.Navigation"/>
         <activity android:name=".acvitity.ExhibitionHallOfFloor"/>
         <!--LBS key-->
         <!--<meta-data android:name="ids_key" android:value="2AD3C846C3BE52FF562F863F8270F021"/>-->
