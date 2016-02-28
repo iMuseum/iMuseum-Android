@@ -63,9 +63,9 @@ public class Homepage extends Activity{
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(Homepage.this, Navigation.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(Homepage.this, Navigation.class);
+//                startActivity(intent);
             }
         });
 
@@ -128,16 +128,16 @@ public class Homepage extends Activity{
         ListView showroomList = (ListView) findViewById(R.id.showroomList);
         List<java.util.Map<String, Object>> data = MuseumData.getShowroomList();
         showroomList.setAdapter(new SimpleAdapter(this, data,
-                R.layout.homepage_listview, new String[]{"name", "englishName", "location"},
-                new int[]{R.id.showroom_name, R.id.showroom_englishName, R.id.showroom_location}));
+                R.layout.homepage_listview, new String[]{"floor", "names", "englishNames"},
+                new int[]{R.id.exhibitionHalls_floor, R.id.exhibitionHalls_names, R.id.exhibitionHalls_englishNames}));
 
         showroomList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), (String) data.get(i).get("name"), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), i+1+"楼", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent();
-                intent.setClass(Homepage.this, Showroom.class);
-                intent.putExtra("name", (String) data.get(i).get("name"));
+                intent.setClass(Homepage.this, ExhibitionHallOfFloor.class);
+                intent.putExtra("floor", i+1);
                 startActivity(intent);
             }
         });

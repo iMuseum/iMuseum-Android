@@ -55,6 +55,7 @@ public class XmlParser {
         String name = null;
         String englishName = null;
         String floor = null;
+        String imgId = null;
         parser.require(XmlPullParser.START_TAG, namespace, "exhibitionHall");
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -71,6 +72,9 @@ public class XmlParser {
                 case "floor":
                     floor = readText(parser, tag);
                     break;
+                case "imgId":
+                    imgId = readText(parser, tag);
+                    break;
                 case "exhibit":
                     exhibits.add(readExhibit(parser));
                     exhibits.get(exhibits.size()-1).
@@ -82,7 +86,7 @@ public class XmlParser {
                     break;
             }
         }
-        ShowroomItem exhibitionHall = new ShowroomItem(name, englishName,Integer.parseInt(floor), exhibits);
+        ShowroomItem exhibitionHall = new ShowroomItem(name, englishName,Integer.parseInt(floor), exhibits, imgId);
         return exhibitionHall;
     }
 

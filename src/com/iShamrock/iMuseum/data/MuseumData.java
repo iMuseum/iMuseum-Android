@@ -2,6 +2,7 @@ package com.iShamrock.iMuseum.data;
 
 import android.content.Context;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.acvitity.*;
 import com.iShamrock.iMuseum.util.XmlParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -9,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
+import java.util.Map;
 
 /**
  * Created by lifengshuang on 2/13/16.
@@ -35,8 +37,11 @@ public class MuseumData {
             e.printStackTrace();
         }
         data = new ArrayList<>();
+        int j = 0;
         for (ShowroomItem exhibitionHall : exhibitionHalls) {
+            exhibitionHall.setId(j);
             data.addAll(exhibitionHall.getExhibits());
+            j++;
         }
         //set the id of all exhibits
         for (int i = 0; i < data.size(); i++) {
@@ -48,14 +53,49 @@ public class MuseumData {
         addFavorItem(2);
     }
 
+    //activity/HomePage
     public static List<Map<String, Object>> getShowroomList() {
         List<Map<String, Object>> list = new LinkedList<>();
-        for (ShowroomItem exhibitionHall : exhibitionHalls) {
+        for (int i = 1; i <= 4 ; i++) {
             Map<String, Object> map = new HashMap<>();
-            map.put("name", exhibitionHall.getName());
-            map.put("englishName", exhibitionHall.getEnglishName());
-            map.put("location", " (" + exhibitionHall.getFloor() + "楼)");
+            List<ShowroomItem> exhibitionHallsOfOneFloor = getExhibitionHallByFloor(i);
+            String names = "";
+            String englishNames = "";
+            for (ShowroomItem exhibitionHall : exhibitionHallsOfOneFloor) {
+                names += exhibitionHall.getName() + " ";
+                englishNames += exhibitionHall.getEnglishName() + " ";
+            }
+            map.put("floor", i + "楼");
+            map.put("names", names);
+            map.put("englishName", englishNames);
             list.add(map);
+        }
+        return list;
+    }
+
+    private static List<ShowroomItem> getExhibitionHallByFloor(int floor) {
+        List<ShowroomItem> list = new LinkedList<>();
+        for (ShowroomItem exhibitionHall : exhibitionHalls) {
+            if (exhibitionHall.getFloor() == floor) {
+                list.add(exhibitionHall);
+            }
+        }
+        return list;
+    }
+
+    //activity/ExhibitionHallOfFloor
+    public static List<Map<String, Object>> getExhibitionHallByFloor2(int floor) {
+        List<Map<String, Object>> list = new LinkedList<>();
+        for (ShowroomItem exhibitionHall : exhibitionHalls) {
+            if (exhibitionHall.getFloor() == floor) {
+                Map<String, Object> map = new HashMap<>();
+                String drawableName = exhibitionHall.getImgId();
+                int res = context.getResources().getIdentifier(drawableName, "drawable", context.getPackageName());
+                map.put("img", res);
+                map.put("name", exhibitionHall.getName());
+                map.put("englishName", exhibitionHall.getEnglishName());
+                list.add(map);
+            }
         }
         return list;
     }
@@ -83,12 +123,17 @@ public class MuseumData {
 
     //activity/Exhibit need
     public static DataItem getDataById(int id) {
-        for (DataItem item : data) {
-            if (item.getId() == id) {
-                return item;
-            }
-        }
-        return null;
+//        for (DataItem item : data) {
+//            if (item.getId() == id) {
+//                return item;
+//            }
+//        }
+//        return null;
+        return data.get(id);
+    }
+
+    public static ShowroomItem getExhibitionHallById(int id) {
+        return exhibitionHalls.get(id);
     }
 
     //activity/Favor need

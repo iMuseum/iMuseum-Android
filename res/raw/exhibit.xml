@@ -4,6 +4,7 @@
         <name>第一展览馆</name>
         <englishName>Exhibition Hall</englishName>
         <floor>1</floor>
+        <imgId>e1</imgId>
         <exhibit>
             <name>大禾方鼎</name>
             <imgId>i1_1</imgId>
@@ -80,6 +81,7 @@
         <name>中国古代雕塑馆</name>
         <englishName>Ancient Chinese Sculpture Gallery</englishName>
         <floor>1</floor>
+        <imgId>e2</imgId>
         <exhibit>
             <name>彩绘木俑</name>
             <imgId>i4</imgId>
@@ -358,6 +360,7 @@
         <name>中国古代青铜馆</name>
         <englishName>Ancient Chinese Bronze Gallery</englishName>
         <floor>1</floor>
+        <imgId>e3</imgId>
         <exhibit>
             <name>镶嵌十字纹方钺</name>
             <imgId>i30</imgId>
@@ -684,6 +687,7 @@
         <name>中国古代陶瓷馆</name>
         <englishName>Gallery of Chinese Ancient Ceramics</englishName>
         <floor>2</floor>
+        <imgId>e4</imgId>
         <exhibit>
             <name>景德镇窑青花山水图板</name>
             <imgId>i1</imgId>
@@ -1001,6 +1005,7 @@
         <name>第二展览馆</name>
         <englishName>Second Exhibition Hall</englishName>
         <floor>2</floor>
+        <imgId>e5</imgId>
         <exhibit>
             <name>佛立像</name>
             <imgId>i2_1</imgId>
@@ -1067,6 +1072,7 @@
         <name>中国历代绘画馆</name>
         <englishName>Gallery of Chinese Paintings</englishName>
         <floor>3</floor>
+        <imgId>e6</imgId>
         <exhibit>
             <name>宋人 虞美人图纨扇卷</name>
             <imgId>i86</imgId>
@@ -1263,6 +1269,7 @@
         <name>中国历代书法馆</name>
         <englishName>Gallery of Chinese Calligraphy</englishName>
         <floor>3</floor>
+        <imgId>e7</imgId>
         <exhibit>
             <name>隶书四言联</name>
             <imgId>i103</imgId>
@@ -1360,6 +1367,7 @@
         <name>中国历代玺印馆</name>
         <englishName>Gallery of Chinese Seals</englishName>
         <floor>3</floor>
+        <imgId>e8</imgId>
         <exhibit>
             <name>涡纹玺</name>
             <imgId>i111</imgId>
@@ -1517,6 +1525,7 @@
         <name>中国少数民族工艺馆</name>
         <englishName>Chinese Minority Nationalities' Art Gallery</englishName>
         <floor>4</floor>
+        <imgId>e9</imgId>
         <exhibit>
             <name>满族妆花纱蟒袍</name>
             <imgId>i126</imgId>
@@ -1698,6 +1707,7 @@
         <name>中国历代钱币馆</name>
         <englishName>Gallery of Chinese Coins</englishName>
         <floor>4</floor>
+        <imgId>e10</imgId>
         <exhibit>
             <name>大泉当千</name>
             <imgId>i143</imgId>
@@ -1868,6 +1878,7 @@
         <name>中国历代玉器馆</name>
         <englishName>Gallery of Chinese Ancient Jade</englishName>
         <floor>4</floor>
+        <imgId>e11</imgId>
         <exhibit>
             <name>玉玦</name>
             <imgId>i159</imgId>
@@ -2044,6 +2055,7 @@
         <name>中国明清家具馆</name>
         <englishName>Chinese Ming and Qing Furniture Gallery</englishName>
         <floor>4</floor>
+        <imgId>e12</imgId>
         <exhibit>
             <name>黄花梨有踏床交杌</name>
             <imgId>i176</imgId>

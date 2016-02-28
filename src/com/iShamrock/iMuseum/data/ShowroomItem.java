@@ -8,9 +8,9 @@ import java.util.List;
  * Created by mayezhou on 16/1/29.
  */
 public class ShowroomItem {
-//    private int id;
+    private int id;
     private String name;
-//    private int imgId;
+    private String imgId;
     private String englishName;
     private int floor;
     private List<DataItem> exhibits;
@@ -19,11 +19,24 @@ public class ShowroomItem {
 
     }
 
-    public ShowroomItem(String name, String englishName, int floor, List<DataItem> exhibits) {
+    public ShowroomItem(String name, String englishName, int floor, List<DataItem> exhibits, String imgId) {
         this.name = name;
         this.englishName = englishName;
         this.floor = floor;
         this.exhibits = exhibits;
+        this.imgId = imgId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getImgId() {
+        return imgId;
     }
 
     public String getName() {
