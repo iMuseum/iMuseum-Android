@@ -10,5 +10,6 @@
             android:numColumns="2"
             android:padding="25dp"
             android:verticalSpacing="20dp"
+            android:horizontalSpacing="20dp"
             android:id="@+id/gridView" android:layout_gravity="center_horizontal"/>
 </LinearLayout>
