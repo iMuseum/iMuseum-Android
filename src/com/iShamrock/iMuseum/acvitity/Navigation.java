@@ -2,6 +2,7 @@
 package com.iShamrock.iMuseum.acvitity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -33,7 +34,7 @@ public class Navigation extends Activity {
         mapView = (MapView) findViewById(R.id.map_view);
 
         map = mapView.getMap();
-
+/*
         map.setOnMapLoadListener(new Map.OnMapLoadListener() {
             @Override
             public void onStartLoading() {
@@ -45,16 +46,103 @@ public class Navigation extends Activity {
                 toast("onLoaded");
             }
         });
-
+*/
         map.setOnMapClickListener(new Map.OnMapClickListener() {
             @Override
             public void onClickPoi(int poiId, int floorLevel, int buildingId) {
-                toast("onClickPoi");
+                //toast("onClickPoi and the poiId is: " + poiId);
+                switch (poiId){
+                    case 485788:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "第一展览馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485779:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国古代雕塑馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485761:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国古代青铜馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485771:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国古代陶瓷馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485775:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "第二展览馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485773:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国历代绘画馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485777:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国历代书法馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485763:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国历代玺印馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485772:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国少数民族工艺馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485762:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国历代钱币馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485792:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国历代玉器馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    case 485793:{
+                        Intent intent = new Intent();
+                        intent.setClass(Navigation.this, Showroom.class);
+                        intent.putExtra("name", "中国明清家具馆");
+                        startActivity(intent);
+                        break;
+                    }
+                    default:break;
+                }
             }
 
             @Override
             public void onClickNothing() {
-                toast("onClickNothing");
+                toast("Please go to the third and fourth floor and have a look!");
             }
         });
 
@@ -140,7 +228,7 @@ public class Navigation extends Activity {
         City.requestCity(new RequestCallback<List<City>>() {
             @Override
             public void onFinish(List<City> cities) {
-                toast("requestCity onFinish");
+                //toast("requestCity onFinish");
                 Iterator<Building> iterator = cities.get(0).getBuildingSet().iterator();
                 Building building = iterator.next();
                 map.init(building.getBuildingId());
@@ -149,7 +237,7 @@ public class Navigation extends Activity {
 
             @Override
             public void onFail() {
-                toast("requestCity onFail");
+                //toast("requestCity onFail");
             }
         });
     }
