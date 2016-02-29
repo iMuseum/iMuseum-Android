@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent" android:background="#ff256da1">
 
     <GridView
             android:layout_width="match_parent"
@@ -11,5 +11,5 @@
             android:padding="25dp"
             android:verticalSpacing="20dp"
             android:horizontalSpacing="20dp"
-            android:id="@+id/gridView" android:layout_gravity="center_horizontal"/>
+            android:id="@+id/gridView" android:layout_gravity="center_horizontal" android:background="#ff256da1"/>
 </LinearLayout>
