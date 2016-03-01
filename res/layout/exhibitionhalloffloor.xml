@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="#ff256da1">
+              android:layout_height="match_parent" android:background="#ff88b9e9">
 
     <GridView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numColumns="2"
-            android:padding="25dp"
+            android:padding="20dp"
             android:verticalSpacing="20dp"
             android:horizontalSpacing="20dp"
-            android:id="@+id/gridView" android:layout_gravity="center_horizontal" android:background="#ff256da1"/>
+            android:id="@+id/gridView" android:layout_gravity="center_horizontal" android:background="#ff88b9e9"/>
 </LinearLayout>

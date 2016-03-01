@@ -16,31 +16,14 @@
             <ImageButton
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/exhibit_menu" android:src="@drawable/menu" android:background="#ff88b9e9"/>
+                    android:id="@+id/exhibit_back" android:src="@drawable/back" android:background="#ff88b9e9"/>
             <TextView
                     android:layout_width="286dp"
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="iMuseum"
+                    android:text="Exhibition"
                     android:id="@+id/main_title" android:textColor="#ffffff"
                     android:layout_gravity="center" android:gravity="center_vertical|center_horizontal"/>
-        </LinearLayout>
-        <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="35dp" android:orientation="horizontal"
-                android:id="@+id/exhibit_title" android:textAlignment="center"
-                android:weightSum="1" android:paddingLeft="0dp"
-                android:layout_gravity="left" android:background="#C6C6C6">
-            <ImageButton
-                    android:layout_width="52dp"
-                    android:layout_height="fill_parent"
-                    android:id="@+id/exhibit_back" android:src="@drawable/back_black"
-                    android:background="#C6C6C6" android:adjustViewBounds="true"/>
-            <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                      android:textAppearance="?android:attr/textAppearanceMedium" android:text="Exhibition"
-                      android:id="@+id/textView2"
-                      android:textColor="#383838"
-                      android:gravity="center_vertical"/>
         </LinearLayout>
         <ScrollView
                 android:layout_width="wrap_content"

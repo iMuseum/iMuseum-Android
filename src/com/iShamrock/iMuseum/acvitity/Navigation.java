@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.iShamrock.iMuseum.R;
 import com.ids.sdk.android.locate.Locator;
@@ -22,12 +24,12 @@ public class Navigation extends Activity {
     private Map map;
     private MapView mapView;
     private Locator locator;
-
-
+    private Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         //static
         setContentView(R.layout.navigation);
@@ -216,6 +218,8 @@ public class Navigation extends Activity {
 
             @Override
             public void onLocatingSucceed(Location location) {
+                //test2:把location打印出来
+                Log.i("location",location.toString());
                 map.setLocation(location);
             }
 
@@ -229,15 +233,31 @@ public class Navigation extends Activity {
             @Override
             public void onFinish(List<City> cities) {
                 //toast("requestCity onFinish");
+
                 Iterator<Building> iterator = cities.get(0).getBuildingSet().iterator();
                 Building building = iterator.next();
                 map.init(building.getBuildingId());
                 locator.init(building.getBuildingId());
+                //test1:把获得的city和building log出来
+                while(iterator.hasNext()){
+                    building = iterator.next();
+                    Log.i("cityId", building.getBuildingId()+"" );
+                }
             }
 
             @Override
             public void onFail() {
                 //toast("requestCity onFail");
+            }
+        });
+
+        //test
+        button = (Button)findViewById(R.id.navigate_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Location location = new Location(20,20,3);
+                map.navigateTo(location);
             }
         });
     }
