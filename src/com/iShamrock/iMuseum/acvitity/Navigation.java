@@ -34,19 +34,19 @@ public class Navigation extends Activity {
         mapView = (MapView) findViewById(R.id.map_view);
 
         map = mapView.getMap();
-/*
+
         map.setOnMapLoadListener(new Map.OnMapLoadListener() {
             @Override
             public void onStartLoading() {
-                toast("onStartLoading");
+                toast("稍等片刻,马上就好~");
             }
 
             @Override
             public void onLoaded() {
-                toast("onLoaded");
+                toast("(*^_^*)");
             }
         });
-*/
+
         map.setOnMapClickListener(new Map.OnMapClickListener() {
             @Override
             public void onClickPoi(int poiId, int floorLevel, int buildingId) {
@@ -138,6 +138,7 @@ public class Navigation extends Activity {
                     }
                     default:break;
                 }
+                //TODO: NavEvent
             }
 
             @Override
@@ -146,7 +147,7 @@ public class Navigation extends Activity {
             }
         });
 
-        map.setOnCameraChangeListener(new Map.OnCameraChangeListener() {
+        map.setOnCameraChangeListener(new Map.OnCameraChangeListener() {//TODO
             @Override
             public void onCameraChange() {
             }
@@ -174,8 +175,10 @@ public class Navigation extends Activity {
             @Override
             public void navigationInfoUpdate(NavigationInfo navigationInfo) {
                 Log.v("Navigation", navigationInfo.toString());
+                //TODO: put info on the screen:
             }
 
+            //following code need not change
             @Override
             public float getMinFarDistanceFromRoute() {
                 return 15;
@@ -212,16 +215,21 @@ public class Navigation extends Activity {
 
             @Override
             public void onFail() {
+                toast("Locator Fail?");//debug
             }
 
             @Override
             public void onLocatingSucceed(Location location) {
                 map.setLocation(location);
+                //test
+                Log.i("get location", location.getFloorLevel() + "楼\n"
+                + "x坐标: "+location.getX() + "\ny坐标: " + location.getY());
             }
 
             @Override
             public void onLocatingFail() {
                 map.hideLocation();
+                toast("Locator Fail!");//debug
             }
         });
 
@@ -231,8 +239,14 @@ public class Navigation extends Activity {
                 //toast("requestCity onFinish");
                 Iterator<Building> iterator = cities.get(0).getBuildingSet().iterator();
                 Building building = iterator.next();
+                Log.i("building", building.getName());//test
                 map.init(building.getBuildingId());
                 locator.init(building.getBuildingId());
+                //test  log.v(city & building ...)
+                for (City city:
+                     cities) {
+                    Log.i("city", city.getName());
+                }
             }
 
             @Override
@@ -251,6 +265,7 @@ public class Navigation extends Activity {
         });
     }
 
+    //activity methods
     @Override
     protected void onResume() {
         super.onResume();
