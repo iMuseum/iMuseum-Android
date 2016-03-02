@@ -16,6 +16,7 @@ import com.ids.sdk.android.model.*;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by mayezhou on 16/2/26.
@@ -26,6 +27,8 @@ public class Navigation extends Activity {
     private Locator locator;
     private Button button;
 
+    //test
+    private Building buildingTest;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -243,11 +246,15 @@ public class Navigation extends Activity {
                 Log.i("building", building.getName());//test
                 map.init(building.getBuildingId());
                 locator.init(building.getBuildingId());
+                buildingTest = building;
+
                 //test  log.v(city & building ...)
                 for (City city:
                      cities) {
                     Log.i("city", city.getName());
+
                 }
+
             }
 
             @Override
@@ -261,8 +268,16 @@ public class Navigation extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Location location = new Location(20,20,3);
-//                map.navigateTo(location);
+                Location location = new Location(0,60,3);
+                map.navigateTo(location);
+//                List<Floor> floorList = buildingTest.getFloorList();
+//                for(Floor floor: floorList){
+//                    Log.i("floorLever", floor.getFloorLevel() + "" );
+//                }
+//                Set<Poi> poiList = floorList.get(floorList.size() - 1).getPoiSet();
+//                for(Poi poi: poiList) {
+//                    Log.i("poi","id: " + poi.getPoiId() + " x: " + poi.getX() + " y: " + poi.getY());
+//                }
             }
         });
     }
