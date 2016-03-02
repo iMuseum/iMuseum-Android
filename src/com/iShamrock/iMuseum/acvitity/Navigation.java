@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.iShamrock.iMuseum.R;
 import com.ids.sdk.android.locate.Locator;
@@ -22,8 +24,7 @@ public class Navigation extends Activity {
     private Map map;
     private MapView mapView;
     private Locator locator;
-
-
+    private Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -252,6 +253,16 @@ public class Navigation extends Activity {
             @Override
             public void onFail() {
                 //toast("requestCity onFail");
+            }
+        });
+
+        //test
+        button = (Button)findViewById(R.id.navigate_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Location location = new Location(20,20,3);
+                map.navigateTo(location);
             }
         });
     }
