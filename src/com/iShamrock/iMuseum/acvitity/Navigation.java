@@ -161,7 +161,7 @@ public class Navigation extends Activity {
         map.setNavListener(new Map.NavListener() {
             @Override
             public void startUpdatingLocation() {
-                if (locator.isReady()) {
+                if (locator.isReady()) {//TODO:  must be false
                     locator.startLocating();
                 }
             }
@@ -261,8 +261,8 @@ public class Navigation extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Location location = new Location(20,20,3);
-                map.navigateTo(location);
+//                Location location = new Location(20,20,3);
+//                map.navigateTo(location);
             }
         });
     }
