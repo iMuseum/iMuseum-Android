@@ -4,12 +4,14 @@ package com.iShamrock.iMuseum.acvitity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.util.DrawerAdapter;
+import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 import com.ids.sdk.android.locate.Locator;
 import com.ids.sdk.android.map.*;
 import com.ids.sdk.android.map.Map;
@@ -36,6 +38,7 @@ public class Navigation extends Activity {
 
         //static
         setContentView(R.layout.navigation);
+        initLeftDrawer();
         mapView = (MapView) findViewById(R.id.map_view);
 
         map = mapView.getMap();
@@ -282,4 +285,29 @@ public class Navigation extends Activity {
         locator.onDestory();
     }
 
+    private void initLeftDrawer() {
+        ListView drawerList = (ListView) findViewById(R.id.left_drawer_navigation);
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_navigation);
+        drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
+        Activity activity = this;
+        drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                DrawerItemOnClickAction.click(drawerLayout, activity, i, 1);
+            }
+        });
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                invalidateOptionsMenu();
+            }
+        };
+        drawerLayout.setDrawerListener(toggle);
+    }
 }

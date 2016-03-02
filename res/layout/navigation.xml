@@ -1,23 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <com.ids.sdk.android.map.MapView
-            android:id="@+id/map_view"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                        android:id="@+id/drawer_layout_navigation"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Jump"
-            android:id="@+id/jump_button"
-            android:textSize="30dp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/navigate_button" android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/jump_button"/>
-</RelativeLayout>
+            android:layout_height="match_parent">
+        <com.ids.sdk.android.map.MapView
+                android:id="@+id/map_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jump"
+                android:id="@+id/jump_button"
+                android:textSize="30dp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Text"
+                android:id="@+id/navigate_button" android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/jump_button"/>
+    </RelativeLayout>
+    <!-- The navigation drawer -->
+    <!-- ignore code below-->
+    <ListView
+            android:id="@+id/left_drawer_navigation"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:choiceMode="singleChoice"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:background="#FFF5F0EB"
+    />
+</android.support.v4.widget.DrawerLayout>
