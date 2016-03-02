@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.iShamrock.iMuseum.R;
 import com.ids.sdk.android.locate.Locator;
@@ -24,7 +25,10 @@ public class Navigation extends Activity {
     private Map map;
     private MapView mapView;
     private Locator locator;
-    private Button button;
+    private TextView navBtn;
+    private Button jumpBtn;
+    private String exhibitionHallName = null;
+    private Location location = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,95 +55,69 @@ public class Navigation extends Activity {
         map.setOnMapClickListener(new Map.OnMapClickListener() {
             @Override
             public void onClickPoi(int poiId, int floorLevel, int buildingId) {
-                //toast("onClickPoi and the poiId is: " + poiId);
                 switch (poiId){
                     case 485788:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "第一展览馆");
-                        startActivity(intent);
+                        exhibitionHallName = "第一展览馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485779:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国古代雕塑馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国古代雕塑馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485761:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国古代青铜馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国古代青铜馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485771:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国古代陶瓷馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国古代陶瓷馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485775:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "第二展览馆");
-                        startActivity(intent);
+                        exhibitionHallName = "第二展览馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485773:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国历代绘画馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国历代绘画馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485777:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国历代书法馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国历代书法馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485763:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国历代玺印馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国历代玺印馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485772:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国少数民族工艺馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国少数民族工艺馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485762:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国历代钱币馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国历代钱币馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485792:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国历代玉器馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国历代玉器馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     case 485793:{
-                        Intent intent = new Intent();
-                        intent.setClass(Navigation.this, Showroom.class);
-                        intent.putExtra("name", "中国明清家具馆");
-                        startActivity(intent);
+                        exhibitionHallName = "中国明清家具馆";
+                        location = new Location((float) 55.0, (float)15.5, 3);
                         break;
                     }
                     default:break;
                 }
-                //TODO: NavEvent
             }
 
             @Override
@@ -223,7 +201,7 @@ public class Navigation extends Activity {
             public void onLocatingSucceed(Location location) {
                 map.setLocation(location);
                 //test
-                Log.i("get location", location.getFloorLevel() + "楼\n"
+                Log.i("get location", "\n"+location.getFloorLevel() + "楼\n"
                 + "x坐标: "+location.getX() + "\ny坐标: " + location.getY());
             }
 
@@ -237,13 +215,11 @@ public class Navigation extends Activity {
         City.requestCity(new RequestCallback<List<City>>() {
             @Override
             public void onFinish(List<City> cities) {
-                //toast("requestCity onFinish");
                 Iterator<Building> iterator = cities.get(0).getBuildingSet().iterator();
                 Building building = iterator.next();
-                Log.i("building", building.getName());//test
+                Log.i("building", building.getName());
                 map.init(building.getBuildingId());
                 locator.init(building.getBuildingId());
-                //test  log.v(city & building ...)
                 for (City city:
                      cities) {
                     Log.i("city", city.getName());
@@ -252,17 +228,28 @@ public class Navigation extends Activity {
 
             @Override
             public void onFail() {
-                //toast("requestCity onFail");
+                toast("requestCity onFail");
             }
         });
 
-        //test
-        button = (Button)findViewById(R.id.navigate_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        //navigation
+        navBtn = (TextView) findViewById(R.id.navigate_button);
+        navBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Location location = new Location(20,20,3);
-//                map.navigateTo(location);
+                map.navigateTo(location);
+            }
+        });
+
+        //startActivity
+        jumpBtn = (Button) findViewById(R.id.jump_button);
+        jumpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(Navigation.this, Showroom.class);
+                intent.putExtra("name", exhibitionHallName);
+                startActivity(intent);
             }
         });
     }

@@ -11,7 +11,13 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test"
-            android:id="@+id/navigate_button"
-            android:layout_alignParentTop="true" android:layout_alignParentLeft="true" android:textSize="40dp"/>
+            android:text="Jump"
+            android:id="@+id/jump_button"
+            android:textSize="30dp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/navigate_button" android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/jump_button"/>
 </RelativeLayout>
