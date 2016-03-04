@@ -19,6 +19,7 @@ import com.ids.sdk.android.model.*;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by mayezhou on 16/2/26.
@@ -223,6 +224,20 @@ public class Navigation extends Activity {
                 Log.i("building", building.getName());
                 map.init(building.getBuildingId());
                 locator.init(building.getBuildingId());
+                Building.requestBuilding(building.getBuildingId(), new RequestCallback<Building>() {
+                    @Override
+                    public void onFinish(Building building) {
+                        Set<Poi> poiSet = building.getFloorList().get(2).getPoiSet();
+                        Iterator<Poi> iteratorSet = poiSet.iterator();
+                        Poi poi = iteratorSet.next();
+                        Log.i("Poi", "x:"+poi.getX()+" ; y:"+poi.getY());
+                    }
+
+                    @Override
+                    public void onFail() {
+                        Log.i("Building", "requestBuilding onFail");
+                    }
+                });
                 for (City city:
                      cities) {
                     Log.i("city", city.getName());
