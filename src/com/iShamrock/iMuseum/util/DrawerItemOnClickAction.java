@@ -4,10 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
-import com.iShamrock.iMuseum.acvitity.Favor;
-import com.iShamrock.iMuseum.acvitity.Homepage;
-import com.iShamrock.iMuseum.acvitity.Map;
-import com.iShamrock.iMuseum.acvitity.Vision;
+import com.iShamrock.iMuseum.acvitity.*;
 
 /**
  * Created by lifengshuang on 11/18/15.
@@ -32,6 +29,10 @@ public class DrawerItemOnClickAction {
                     break;
                 case 4:
                     intent.setClass(activity, Favor.class);
+                    activity.startActivity(intent);
+                    break;
+                case 5:
+                    intent.setClass(activity, Navigation.class);
                     activity.startActivity(intent);
                     break;
             }

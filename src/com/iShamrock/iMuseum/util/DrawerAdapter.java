@@ -39,6 +39,7 @@ public class DrawerAdapter extends BaseAdapter {
         drawerList.add("Map");
         drawerList.add("Vision");
         drawerList.add("Favor");
+        drawerList.add("Navigation");
     }
 
     @Override
