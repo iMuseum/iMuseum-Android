@@ -134,7 +134,7 @@ public class Homepage extends Activity{
         showroomList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), i+1+"楼", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), i + 1 +"楼", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent();
                 intent.setClass(Homepage.this, ExhibitionHallOfFloor.class);
                 intent.putExtra("floor", i+1);

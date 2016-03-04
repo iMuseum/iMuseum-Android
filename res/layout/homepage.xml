@@ -37,31 +37,23 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="242dp"
                                                    android:id="@+id/hp_viewpager"
-                                                   android:background="#fffff6fa"
-                                                   android:layout_marginLeft="10dp" android:layout_marginRight="10dp"
-                                                   android:layout_marginBottom="10dp" android:layout_marginTop="10dp">
+                                                   android:background="#ff224769">
                 </android.support.v4.view.ViewPager>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Welcome!"
-                        android:id="@+id/textView2" android:textColor="#ff88b9e9" android:textSize="40dp"
-                        android:layout_gravity="center_horizontal" android:layout_marginTop="-270dp"/>
             </LinearLayout>
             <TextView android:layout_width="match_parent" android:layout_height="30dp" android:text="Exhibition Hall of Floor"
                       android:id="@+id/textView4" android:textColor="#ffffffff" android:textSize="20dp"
                       android:layout_gravity="center_horizontal" android:background="#ff88b9e9"/>
-            <ListView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/showroomList" android:layout_gravity="center_horizontal"
-                    android:background="#C6C6C6"/>
             <ImageButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/hello" android:layout_gravity="top|right"
-                    android:src="@android:drawable/ic_menu_compass" android:layout_marginTop="-50dp"
-            />
+                    android:src="@android:drawable/ic_menu_compass" android:layout_marginTop="-60dp"
+                    android:layout_marginRight="50dp"/>
+            <ListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/showroomList" android:layout_gravity="center_horizontal"
+                    />
         </LinearLayout>
     </LinearLayout>
     <!-- The navigation drawer -->
