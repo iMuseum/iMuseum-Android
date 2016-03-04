@@ -308,7 +308,7 @@ public class Navigation extends Activity {
         drawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                DrawerItemOnClickAction.click(drawerLayout, activity, i, 1);
+                DrawerItemOnClickAction.click(drawerLayout, activity, i, 5);
             }
         });
 
