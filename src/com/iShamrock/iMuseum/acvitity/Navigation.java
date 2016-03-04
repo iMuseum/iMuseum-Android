@@ -53,6 +53,7 @@ public class Navigation extends Activity {
             @Override
             public void onLoaded() {
                 toast("(*^_^*)");
+                //TODO: map.addMarker();
             }
         });
 
@@ -130,7 +131,7 @@ public class Navigation extends Activity {
             }
         });
 
-        map.setOnCameraChangeListener(new Map.OnCameraChangeListener() {//TODO
+        map.setOnCameraChangeListener(new Map.OnCameraChangeListener() {
             @Override
             public void onCameraChange() {
             }
@@ -143,7 +144,7 @@ public class Navigation extends Activity {
         map.setNavListener(new Map.NavListener() {
             @Override
             public void startUpdatingLocation() {
-                if (locator.isReady()) {//TODO:  must be false
+                if (locator.isReady()) {
                     locator.startLocating();
                 }
             }
@@ -158,7 +159,6 @@ public class Navigation extends Activity {
             @Override
             public void navigationInfoUpdate(NavigationInfo navigationInfo) {
                 Log.v("Navigation", navigationInfo.toString());
-                //TODO: put info on the screen:
             }
 
             //following code need not change
@@ -229,8 +229,10 @@ public class Navigation extends Activity {
                     public void onFinish(Building building) {
                         Set<Poi> poiSet = building.getFloorList().get(2).getPoiSet();
                         Iterator<Poi> iteratorSet = poiSet.iterator();
-                        Poi poi = iteratorSet.next();
-                        Log.i("Poi", "x:"+poi.getX()+" ; y:"+poi.getY());
+                        while (iteratorSet.hasNext()) {
+                            Poi poi = iteratorSet.next();
+                            Log.i("Poi", "PoiID: " + poi.getPoiId()+ "floor: "+poi.getFloorLevel()+"x:"+poi.getX()+" ; y:"+poi.getY());
+                        }
                     }
 
                     @Override
