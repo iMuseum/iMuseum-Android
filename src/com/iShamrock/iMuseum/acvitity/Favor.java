@@ -19,6 +19,9 @@ import java.util.Map;
  */
 public class Favor extends Activity {
     private static Set<Integer> favors = new HashSet<>();
+    private ListView drawerList;
+    private ImageButton leftDrawerBtn;
+    private DrawerLayout drawerLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,15 @@ public class Favor extends Activity {
         setContentView(R.layout.favor);
         initLeftDrawer();
         initFavorList();
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_favor);
+        leftDrawerBtn = (ImageButton) findViewById(R.id.left_drawer_btn_favor);
+        leftDrawerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(drawerList);
+            }
+        });
     }
 
     private void initFavorList() {
@@ -48,7 +60,7 @@ public class Favor extends Activity {
     }
 
     private void initLeftDrawer() {
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_favor);
+        drawerList = (ListView) findViewById(R.id.left_drawer_favor);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_favor);
         drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
         Activity activity = this;

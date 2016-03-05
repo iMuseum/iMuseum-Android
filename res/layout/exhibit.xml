@@ -16,7 +16,7 @@
             <ImageButton
                     android:layout_width="52dp"
                     android:layout_height="match_parent"
-                    android:id="@+id/exhibit_back" android:src="@drawable/back" android:background="#ff88b9e9"/>
+                    android:id="@+id/left_drawer_btn_exhibit" android:src="@drawable/menu" android:background="#ff88b9e9"/>
             <TextView
                     android:layout_width="286dp"
                     android:layout_height="match_parent"

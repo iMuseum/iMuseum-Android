@@ -1,6 +1,7 @@
 package com.iShamrock.iMuseum.acvitity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -31,9 +32,13 @@ public class Homepage extends Activity{
 //    private ImageView ivAnimView;
 //    private Animation animation;
     private ImageButton imageButton;
+    private ImageButton leftDrawerBtn;
     public static final String LOG_TAG = "HOMEPAGE";
     public ImageHandler handler = new ImageHandler(new WeakReference<Homepage>(this));
     public ViewPager viewPager;
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawerLayout;
+    private ListView drawerList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +46,9 @@ public class Homepage extends Activity{
         setContentView(R.layout.homepage);
         MuseumData.initData(this);
         initLeftDrawer();
-        //myz start here
+        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.homepage, null);
+        drawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout_homepage);
         /*
         animation = AnimationUtils.loadAnimation(this, R.anim.translate_pic);
         ivAnimView.setAnimation(animation);
@@ -64,11 +71,18 @@ public class Homepage extends Activity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(Homepage.this, Navigation.class);
+                intent.setClass(Homepage.this, Camera.class);
                 startActivity(intent);
             }
         });
 
+        leftDrawerBtn = (ImageButton) findViewById(R.id.left_drawer_btn_hp);
+        leftDrawerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(drawerList);
+            }
+        });
 
         initShowroomList();
         initViewPager();
@@ -144,7 +158,7 @@ public class Homepage extends Activity{
     }
 
     private void initLeftDrawer() {
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_homepage);
+        drawerList = (ListView) findViewById(R.id.left_drawer_homepage);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_homepage);
         drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
         Activity activity = this;
@@ -155,7 +169,7 @@ public class Homepage extends Activity{
             }
         });
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
+        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.drawable.ic_drawer, R.string.drawer_open, R.string.drawer_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 invalidateOptionsMenu();

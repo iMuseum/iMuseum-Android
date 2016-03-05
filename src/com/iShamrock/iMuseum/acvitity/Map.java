@@ -18,10 +18,24 @@ import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 public class Map extends Activity{
     private TextView[] map_touch;
     private int map_showroom_num = 12;
+    private ListView drawerList;
+    private ImageButton leftDrawerBtn;
+    private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
+        initLeftDrawer();
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_map);
+        leftDrawerBtn = (ImageButton) findViewById(R.id.left_drawer_btn_map);
+        leftDrawerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(drawerList);
+            }
+        });
 
         /* use TabHost to show the maps of floors. */
         TabHost tabHost = (TabHost)this.findViewById(R.id.tabHost);
@@ -33,7 +47,6 @@ public class Map extends Activity{
         tabHost.addTab(tabHost.newTabSpec("floor4").setIndicator("floor4").setContent(R.id.map_layout_floor4));
         tabHost.setCurrentTab(0);
 
-//todo
         Activity activity = this;
         map_touch = new TextView[map_showroom_num];
         map_touch[0] = (TextView) this.findViewById(R.id.map_touch0);
@@ -157,11 +170,9 @@ public class Map extends Activity{
                 startActivity(intent);
             }
         });
-
-        initLeftDrawer();
     }
     private void initLeftDrawer() {
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_map);
+        drawerList = (ListView) findViewById(R.id.left_drawer_map);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_map);
         drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
         Activity activity = this;

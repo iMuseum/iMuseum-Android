@@ -32,7 +32,7 @@ public class DrawerAdapter extends BaseAdapter {
     public DrawerAdapter(Context context) {
         this.context = context;
         mInflater = LayoutInflater.from(context);
-
+        //data
         drawerList = new ArrayList<String>();
         drawerList.add("iMuseum");
         drawerList.add("Homepage");
@@ -63,7 +63,7 @@ public class DrawerAdapter extends BaseAdapter {
         if (view == null) {
             holder = new ViewHolder();
             if (i == 0) {
-                /*postal*/
+                //title
                 view = mInflater.inflate(R.layout.drawer_list_title, null);
                 holder.layout = (LinearLayout) view.findViewById(R.id.drawer_title_layout);
                 holder.text = (TextView) view.findViewById(R.id.drawer_title_text);

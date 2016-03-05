@@ -24,11 +24,24 @@ public class Exhibit extends Activity{
     private ImageButton go;
     /* the boolean isLiked is true when the user have liked it */
     private boolean isLiked = false;
+    private ListView drawerList;
+    private ImageButton leftDrawerBtn;
+    private DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exhibit);
         initLeftDrawer();
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_exhibit);
+        leftDrawerBtn = (ImageButton) findViewById(R.id.left_drawer_btn_exhibit);
+        leftDrawerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(drawerList);
+            }
+        });
 
         /* get the id of this exhibit */
         Bundle bundle = this.getIntent().getExtras();
@@ -54,7 +67,6 @@ public class Exhibit extends Activity{
 
         isLiked = MuseumData.isFavored(id);
         likeLayout = (LinearLayout)this.findViewById(R.id.likeLayout);
-        back = (ImageButton)this.findViewById(R.id.exhibit_back);
         like = (ImageButton)this.findViewById(R.id.exhibit_like);
         go = (ImageButton)this.findViewById(R.id.exhibit_go);
 
@@ -99,7 +111,7 @@ public class Exhibit extends Activity{
     }
 
     private void initLeftDrawer() {
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_exhibit);
+        drawerList = (ListView) findViewById(R.id.left_drawer_exhibit);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_exhibit);
         drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
         Activity activity = this;

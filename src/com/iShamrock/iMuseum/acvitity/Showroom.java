@@ -19,12 +19,25 @@ import java.util.*;
 public class Showroom extends Activity{
     private TextView showroom_title;
     private String showroom;
+    private ListView drawerList;
+    private ImageButton leftDrawerBtn;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showroom);
         initLeftDrawer();
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_showroom);
+        leftDrawerBtn = (ImageButton) findViewById(R.id.left_drawer_btn_sr);
+        leftDrawerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(drawerList);
+            }
+        });
+
         /* get the showroom of this exhibit */
         Bundle bundle = this.getIntent().getExtras();
         showroom = bundle.getString("name");
@@ -55,7 +68,7 @@ public class Showroom extends Activity{
     }
 
     private void initLeftDrawer() {
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_showroom);
+        drawerList = (ListView) findViewById(R.id.left_drawer_showroom);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_showroom);
         drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
         Activity activity = this;

@@ -13,7 +13,7 @@
 
         <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50dp"
                       android:background="#ff88b9e9" android:weightSum="1">
-            <ImageButton android:layout_width="52dp" android:layout_height="fill_parent" android:id="@+id/imageButton3"
+            <ImageButton android:layout_width="52dp" android:layout_height="fill_parent" android:id="@+id/left_drawer_btn_map"
                          android:src="@drawable/menu" android:background="#ff88b9e9"
                          android:adjustViewBounds="true"/>
             <TextView android:layout_width="286dp" android:layout_height="match_parent"
