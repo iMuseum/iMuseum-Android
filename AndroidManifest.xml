@@ -8,10 +8,7 @@
                  android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
         <activity android:name=".acvitity.Homepage"
                   android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
         <activity android:name=".acvitity.Map"/>
         <activity android:name=".acvitity.Vision"/>
@@ -20,6 +17,12 @@
         <activity android:name=".acvitity.Showroom"/>
         <activity android:name=".acvitity.Navigation"/>
         <activity android:name=".acvitity.ExhibitionHallOfFloor"/>
+        <activity android:name=".acvitity.AR.ARActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <!--LBS key-->
         <meta-data android:name="ids_key" android:value="2AD3C846C3BE52FF562F863F8270F021"/>
     </application>
