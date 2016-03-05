@@ -23,7 +23,7 @@
                 android:numColumns="2"
                 android:verticalSpacing="30dp"
                 android:horizontalSpacing="20dp"
-                android:id="@+id/gridView" android:layout_gravity="center_horizontal" android:background="#ff638bb3"
+                android:id="@+id/gridView" android:layout_gravity="center_horizontal" android:background="#ff224769"
                 android:padding="20dp"/>
     </LinearLayout>
     <!-- The navigation drawer -->

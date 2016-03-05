@@ -34,13 +34,6 @@
                 android:id="@+id/navigate_button" android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignTop="@+id/jump_button"/>
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical"
-                      android:layout_width="wrap_content" android:layout_height="wrap_content"
-                      android:id="@+id/exhibitionhall_marker">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Marker"
-                      android:id="@+id/exhibitionhall_marker_name" android:textSize="20dp"
-                      android:textColor="#ffa11622"/>
-        </LinearLayout>
     </RelativeLayout>
     <!-- The navigation drawer -->
     <!-- ignore code below-->
