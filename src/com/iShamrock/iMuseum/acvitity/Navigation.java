@@ -2,6 +2,7 @@
 package com.iShamrock.iMuseum.acvitity;
 
 import android.app.Activity;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -42,6 +43,7 @@ public class Navigation extends Activity {
         mapView = (MapView) findViewById(R.id.map_view);
 
         map = mapView.getMap();
+        final Marker m = new Marker(0, 0, 1);
 
         map.setOnMapLoadListener(new Map.OnMapLoadListener() {
             @Override
@@ -53,6 +55,14 @@ public class Navigation extends Activity {
             public void onLoaded() {
                 toast("(*^_^*)");
                 //TODO: map.addMarker();
+                map.addMarker(m, new Map.MarkerCallback() {
+                            @Override
+                            public View getView(Marker marker) {
+                                TextView view = (TextView) findViewById(R.id.exhibitionhall_marker);
+                                return view;
+                            }
+
+                });
             }
         });
 
@@ -120,7 +130,10 @@ public class Navigation extends Activity {
                         location = new Location((float) 52.0, (float)45.0, 3);
                         break;
                     }
-                    default:break;
+                    default:{
+                        exhibitionHallName = null;
+                        break;
+                    }
                 }
             }
 
@@ -265,10 +278,15 @@ public class Navigation extends Activity {
         jumpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(Navigation.this, Showroom.class);
-                intent.putExtra("name", exhibitionHallName);
-                startActivity(intent);
+                if(exhibitionHallName != null) {
+                    Intent intent = new Intent();
+                    intent.setClass(Navigation.this, Showroom.class);
+                    intent.putExtra("name", exhibitionHallName);
+                    startActivity(intent);
+                }
+                else{
+                    toast("Please choose an exhibitionHall to Jump into!");
+                }
             }
         });
     }
