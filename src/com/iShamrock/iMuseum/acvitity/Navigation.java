@@ -34,6 +34,7 @@ public class Navigation extends Activity {
     private Button jumpBtn;
     private String exhibitionHallName = null;
     private Location location;
+    private Location destination;
     private ListView drawerList;
     private ImageButton leftDrawerBtn;
     private DrawerLayout drawerLayout;
@@ -153,6 +154,8 @@ public class Navigation extends Activity {
 //                    }
 //                });
                 toast("marker done");
+                map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);//test
+
             }
         });
 
@@ -360,8 +363,7 @@ public class Navigation extends Activity {
             float x = bundle.getFloat("x");
             float y = bundle.getFloat("y");
             int floor = bundle.getInt("floor");
-            Location destination = new Location(x, y, floor);
-            map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);//test
+            destination = new Location(x, y, floor);
         }
 
         navBtn = (TextView) findViewById(R.id.navigate_button);
