@@ -90,9 +90,6 @@ public class MuseumData {
         for (int i = 0; i < data.size(); i++) {
             data.get(i).id(i);
         }
-        //todo: following two lines should be deleted when release
-        addFavorItem(0);
-        addFavorItem(2);
     }
 
     //activity/HomePage
