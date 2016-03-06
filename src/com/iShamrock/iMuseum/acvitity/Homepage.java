@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.acvitity.AR.ARActivity;
 import com.iShamrock.iMuseum.data.MuseumData;
 
 import com.iShamrock.iMuseum.util.DrawerAdapter;
@@ -46,9 +47,7 @@ public class Homepage extends Activity{
         setContentView(R.layout.homepage);
         MuseumData.initData(this);
         initLeftDrawer();
-        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.homepage, null);
-        drawerLayout = (DrawerLayout) view.findViewById(R.id.drawer_layout_homepage);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_homepage);
         /*
         animation = AnimationUtils.loadAnimation(this, R.anim.translate_pic);
         ivAnimView.setAnimation(animation);
@@ -71,7 +70,7 @@ public class Homepage extends Activity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(Homepage.this, Camera.class);
+                intent.setClass(Homepage.this, ARActivity.class);
                 startActivity(intent);
             }
         });

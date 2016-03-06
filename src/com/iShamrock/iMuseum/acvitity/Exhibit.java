@@ -10,6 +10,7 @@ import android.widget.*;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.data.DataItem;
 import com.iShamrock.iMuseum.data.MuseumData;
+import com.iShamrock.iMuseum.data.ShowroomItem;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 
@@ -19,7 +20,6 @@ import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 public class Exhibit extends Activity{
     //wx start here
     private LinearLayout likeLayout;
-    private ImageButton back;
     private ImageButton like;
     private ImageButton go;
     /* the boolean isLiked is true when the user have liked it */
@@ -74,14 +74,6 @@ public class Exhibit extends Activity{
             like.setImageDrawable(getResources().getDrawable(R.drawable.liked));
         }
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(activity, Vision.class);
-                startActivity(intent);
-            }
-        });
         /* when the user click the like button, change the image it shows */
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +95,11 @@ public class Exhibit extends Activity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
-                intent.setClass(activity, Map.class);
-                //intent.putExtra("floor", (int)exhibit.getFloor());
+                intent.setClass(activity, Navigation.class);
+                ShowroomItem exhibitionHall = MuseumData.getExhibitionHallByName(exhibit.getLocation());
+                intent.putExtra("x", exhibitionHall.getLocation().getX());
+                intent.putExtra("y", exhibitionHall.getLocation().getY());
+                intent.putExtra("floor", exhibitionHall.getLocation().getFloorLevel());
                 startActivity(intent);
             }
         });

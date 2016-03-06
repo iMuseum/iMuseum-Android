@@ -1,9 +1,11 @@
 package com.iShamrock.iMuseum.data;
 
 import android.content.Context;
+import android.util.Log;
 import com.iShamrock.iMuseum.R;
 import com.iShamrock.iMuseum.acvitity.*;
 import com.iShamrock.iMuseum.util.XmlParser;
+import com.ids.sdk.android.model.Location;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.FileNotFoundException;
@@ -40,6 +42,47 @@ public class MuseumData {
         int j = 0;
         for (ShowroomItem exhibitionHall : exhibitionHalls) {
             exhibitionHall.setId(j);
+            //set location
+            switch (exhibitionHall.getName()) {
+                case "第一展览馆":
+                    exhibitionHall.setLocation(new Location((float) 58.9, (float)14.9, 3));
+                    break;
+                case "中国古代雕塑馆":
+                    exhibitionHall.setLocation(new Location((float) 38.0, (float)14.9, 3));
+                    break;
+                case "中国古代青铜馆":
+                    exhibitionHall.setLocation(new Location((float) 18.4, (float)14.9, 3));
+                    break;
+                case "中国古代陶瓷馆":
+                    exhibitionHall.setLocation(new Location((float) 10.0, (float)20.0, 3));
+                    break;
+                case "第二展览馆":
+                    exhibitionHall.setLocation(new Location((float) 10.0, (float)35.0, 3));
+                    break;
+                case "中国历代绘画馆":
+                    exhibitionHall.setLocation(new Location((float) 10.0, (float)40.0, 3));
+                    break;
+                case "中国历代书法馆":
+                    exhibitionHall.setLocation(new Location((float) 10.0, (float)50.0, 3));
+                    break;
+                case "中国历代玺印馆":
+                    exhibitionHall.setLocation(new Location((float) 15.0, (float)50.0, 3));
+                    break;
+                case "中国少数民族工艺馆":
+                    exhibitionHall.setLocation(new Location((float) 26.2, (float)51.1, 3));
+                    break;
+                case  "中国历代钱币馆":
+                    exhibitionHall.setLocation(new Location((float) 40.0, (float)50.0, 3));
+                    break;
+                case "中国历代玉器馆":
+                    exhibitionHall.setLocation(new Location((float) 52.0, (float)30.0, 4));
+                    break;
+                case "中国明清家具馆":
+                    exhibitionHall.setLocation(new Location((float) 52.0, (float)45.0, 4));
+                    break;
+                default:
+                    break;
+            }
             data.addAll(exhibitionHall.getExhibits());
             j++;
         }
@@ -47,7 +90,6 @@ public class MuseumData {
         for (int i = 0; i < data.size(); i++) {
             data.get(i).id(i);
         }
-
         //todo: following two lines should be deleted when release
         addFavorItem(0);
         addFavorItem(2);
@@ -136,6 +178,16 @@ public class MuseumData {
         return exhibitionHalls.get(id);
     }
 
+    public static ShowroomItem getExhibitionHallByName(String name) {
+        for (ShowroomItem exhibitionHall: exhibitionHalls) {
+            if (exhibitionHall.getName().equals(name)) {
+                return exhibitionHall;
+            }
+        }
+        Log.e("getExhibitionHall", "cannot match the name!");
+        return null;
+    }
+
     //activity/Favor need
     public static List<Map<String, Object>> getFavorData() {
         List<Map<String, Object>> list = new LinkedList<>();
@@ -171,4 +223,6 @@ public class MuseumData {
     public static void deleteFavorItem(int id) {
         favors.remove(id);
     }
+
+
 }

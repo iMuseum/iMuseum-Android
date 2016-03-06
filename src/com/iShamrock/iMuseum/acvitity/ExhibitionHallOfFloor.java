@@ -19,12 +19,24 @@ import java.util.*;
  */
 public class ExhibitionHallOfFloor extends Activity {
     private GridView gridView;
+    private ListView drawerList;
+    private ImageButton leftDrawerBtn;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exhibitionhalloffloor);
         initLeftDrawer();
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_exhibitionhalloffloor);
+        leftDrawerBtn = (ImageButton) findViewById(R.id.left_drawer_btn_ef);
+        leftDrawerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.openDrawer(drawerList);
+            }
+        });
 
         /* get the floor of homepage */
         Bundle bundle = this.getIntent().getExtras();
@@ -49,7 +61,7 @@ public class ExhibitionHallOfFloor extends Activity {
     }
 
     private void initLeftDrawer() {
-        ListView drawerList = (ListView) findViewById(R.id.left_drawer_exhibitionhalloffloor);
+        drawerList = (ListView) findViewById(R.id.left_drawer_exhibitionhalloffloor);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_exhibitionhalloffloor);
         drawerList.setAdapter(new DrawerAdapter(getApplicationContext()));
         Activity activity = this;

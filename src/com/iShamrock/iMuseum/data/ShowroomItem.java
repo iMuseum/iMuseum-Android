@@ -1,6 +1,7 @@
 package com.iShamrock.iMuseum.data;
 
 import com.iShamrock.iMuseum.acvitity.Showroom;
+import com.ids.sdk.android.model.Location;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class ShowroomItem {
     private String englishName;
     private int floor;
     private List<DataItem> exhibits;
+    private Location location;
 
     public ShowroomItem() {
 
@@ -73,4 +75,13 @@ public class ShowroomItem {
     public void setExhibits(List<DataItem> exhibits) {
         this.exhibits = exhibits;
     }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
 }
+
