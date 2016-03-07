@@ -32,7 +32,6 @@ public class Homepage extends Activity{
 //    private AnimationDrawable animationDrawable;
 //    private ImageView ivAnimView;
 //    private Animation animation;
-    private ImageButton imageButton;
     private ImageButton leftDrawerBtn;
     public static final String LOG_TAG = "HOMEPAGE";
     public ImageHandler handler = new ImageHandler(new WeakReference<Homepage>(this));
@@ -64,16 +63,6 @@ public class Homepage extends Activity{
         animationDrawable.stop();
         animationDrawable.start();
         */
-
-        imageButton = (ImageButton) findViewById(R.id.hello);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(Homepage.this, ARActivity.class);
-                startActivity(intent);
-            }
-        });
 
         leftDrawerBtn = (ImageButton) findViewById(R.id.left_drawer_btn_hp);
         leftDrawerBtn.setOnClickListener(new View.OnClickListener() {

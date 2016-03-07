@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,7 +32,7 @@ public class ARActivity extends Activity {
     Context context;
     public static DisplayMetrics dm;
     public static ArrayList<Angle> angleArray;
-    float values[] = new float[3];
+    float values[] = new float[3];//get from orientationalSensor
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -122,6 +123,7 @@ public class ARActivity extends Activity {
         @Override
         public void onSensorChanged(SensorEvent event) {
             values = event.values;
+            Log.i("SensorValue", values[0]+"    "+values[1]+"   "+values[2]);
             for (int i = 0; i < angleArray.size(); i++) {
                 //这里是重新设定现在的地理位置和方向，不用修改
                 angleArray.get(i).reset((double)values[0], currentPoint);

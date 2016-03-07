@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.acvitity.AR.ARActivity;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 import com.ids.sdk.android.locate.Locator;
@@ -73,12 +74,12 @@ public class Navigation extends Activity {
         map.setOnMapLoadListener(new Map.OnMapLoadListener() {
             @Override
             public void onStartLoading() {
-                toast("稍等片刻,马上就好~");
+                toast("start loading");
             }
 
             @Override
             public void onLoaded() {
-                toast("(*^_^*)");
+                toast("loaded");
                 //add marker
                 map.addMarker(m0, new Map.MarkerCallback() {
                             @Override
@@ -309,6 +310,7 @@ public class Navigation extends Activity {
             @Override
             public void onLocatingSucceed(Location location) {
                 map.setLocation(location);
+                currentLocation = location;
                 //test
                 Log.i("get location", "\n"+location.getFloorLevel() + "楼\n"
                 + "x坐标: "+location.getX() + "\ny坐标: " + location.getY());
@@ -317,7 +319,7 @@ public class Navigation extends Activity {
             @Override
             public void onLocatingFail() {
                 map.hideLocation();
-                toast("Locator Fail!");//debug
+//                toast("Locator Fail!");
             }
         });
 
