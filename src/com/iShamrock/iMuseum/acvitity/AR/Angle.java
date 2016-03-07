@@ -2,6 +2,8 @@ package com.iShamrock.iMuseum.acvitity.AR;
 
 import android.util.DisplayMetrics;
 
+import java.util.Map;
+
 /**
  * Created by 逢双 on 14-2-22.
  */
@@ -14,7 +16,6 @@ public class Angle {
     private double angle;
     private double oriental;
     private double xPercent;
-    private double height;
     private double dAngle;
     private LBSPoint here;
     private LBSPoint there;
@@ -39,7 +40,6 @@ public class Angle {
         toShow();
         calculateXPercent();
         calculateDistance();
-        height = Math.log10(distance) * dm.heightPixels / 7;
     }
 
     private void calculateAngle(){
@@ -90,7 +90,6 @@ public class Angle {
         toShow();
         calculateXPercent();
         calculateDistance();
-        height = Math.log10(distance) * dm.heightPixels / 7;
     }
 
     public boolean isShow() {
@@ -110,7 +109,7 @@ public class Angle {
     }
 
     public double getHeight() {
-        return height;
+        return there.getNumber() * dm.heightPixels / 25.0;
     }
 
     public double getDistance() {

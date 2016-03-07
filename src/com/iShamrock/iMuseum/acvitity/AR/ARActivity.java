@@ -102,6 +102,7 @@ public class ARActivity extends Activity {
         angleArray = new ArrayList<>();
         //这里在angleArray里面加入展馆的坐标（固定值）
         //new Angle(angle, 现在坐标, 展馆坐标);
+//        MuseumData.initData(this);
         List<ShowroomItem> exhibitionHalls = MuseumData.getExhibitionHalls();
         for (ShowroomItem exhibitionHall : exhibitionHalls) {
             angleArray.add(new Angle(angle, new LBSPoint(currentLocation), new LBSPoint(exhibitionHall.getLocation()), exhibitionHall.getName()));
