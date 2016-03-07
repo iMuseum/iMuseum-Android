@@ -62,9 +62,14 @@ public class Navigation extends Activity {
         visionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(Navigation.this, ARActivity.class);
-                startActivity(intent);
+                if (currentLocation != null) {
+                    Intent intent = new Intent();
+                    intent.setClass(Navigation.this, ARActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    toast("Please click MY LOCATION first");
+                }
             }
         });
 

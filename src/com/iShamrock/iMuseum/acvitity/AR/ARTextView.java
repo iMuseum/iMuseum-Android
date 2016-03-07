@@ -76,10 +76,9 @@ public class ARTextView extends View {
 //            canvas.drawText(message, (float) angleArray.get(i).getxPercent() * canvas.getWidth() - canvas.getWidth(),
 //                    (float) angleArray.get(i).getHeight(), paint);
 //        }
-        //这里就是画上文字啦，需要改的就是文字Hahaha，还有paint可以修改一下画的文字的大小啊颜色啊什么的
         //上面一堆被注释的主要是给文字加个框，因为文字是变长的所以框也要变长，时间有多的话可以试一试
         for (Angle angle : angleArray) {
-            canvas.drawText("Test", (float) angle.getxPercent() * canvas.getWidth() - canvas.getWidth(),
+            canvas.drawText(angle.getText(), (float) angle.getxPercent() * canvas.getWidth() - canvas.getWidth(),
                     (float) angle.getHeight(), paint);
         }
     }

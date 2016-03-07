@@ -20,12 +20,19 @@ public class Angle {
     private LBSPoint there;
     private double distance;
     private DisplayMetrics dm = ARActivity.dm;
+    private String text;
 
-    public Angle(double oriental, LBSPoint here, LBSPoint there){
+    public String getText() {
+        return text;
+    }
+
+    public Angle(double oriental, LBSPoint here, LBSPoint there, String text){
 //        System.out.println("oriental is :" + oriental);
         this.oriental = oriental;
         this.here = here;
         this.there = there;
+        this.text = text;
+
 //        height = Math.random() * dm.heightPixels * 0.8 + dm.heightPixels * 0.1;
         calculateAngle();
         calculateDAngle();
