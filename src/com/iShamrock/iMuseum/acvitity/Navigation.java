@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.iShamrock.iMuseum.R;
+import com.iShamrock.iMuseum.acvitity.AR.ARActivity;
 import com.iShamrock.iMuseum.util.DrawerAdapter;
 import com.iShamrock.iMuseum.util.DrawerItemOnClickAction;
 import com.ids.sdk.android.locate.Locator;
@@ -38,6 +39,8 @@ public class Navigation extends Activity {
     private ListView drawerList;
     private ImageButton leftDrawerBtn;
     private DrawerLayout drawerLayout;
+    private ImageButton visionBtn;
+    public static Location currentLocation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,16 @@ public class Navigation extends Activity {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(drawerList);
+            }
+        });
+
+        visionBtn = (ImageButton) findViewById(R.id.to_vision);
+        visionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(Navigation.this, ARActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -73,12 +86,12 @@ public class Navigation extends Activity {
         map.setOnMapLoadListener(new Map.OnMapLoadListener() {
             @Override
             public void onStartLoading() {
-                toast("稍等片刻,马上就好~");
+                toast("start loading");
             }
 
             @Override
             public void onLoaded() {
-                toast("(*^_^*)");
+                toast("loaded");
                 //add marker
 //                map.addMarker(m0, new Map.MarkerCallback() {
 //                            @Override
@@ -153,9 +166,10 @@ public class Navigation extends Activity {
 //                        return createTextView("中国明清家具馆");
 //                    }
 //                });
-                toast("marker done");
-                map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);//test
-
+//                toast("marker done");
+                if(destination != null) {
+                    map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);//test
+                }
             }
         });
 
@@ -309,6 +323,7 @@ public class Navigation extends Activity {
             @Override
             public void onLocatingSucceed(Location location) {
                 map.setLocation(location);
+                currentLocation = location;
                 //test
                 Log.i("get location", "\n"+location.getFloorLevel() + "楼\n"
                 + "x坐标: "+location.getX() + "\ny坐标: " + location.getY());
@@ -317,7 +332,7 @@ public class Navigation extends Activity {
             @Override
             public void onLocatingFail() {
                 map.hideLocation();
-                toast("Locator Fail!");//debug
+//                toast("Locator Fail!");
             }
         });
 
