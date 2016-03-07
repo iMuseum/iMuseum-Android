@@ -1,35 +1,50 @@
 package com.iShamrock.iMuseum.acvitity.AR;
 
+import com.ids.sdk.android.model.Location;
+
 /**
  * Created by lifengshuang on 3/5/16.
  */
 public class LBSPoint {
     //我现在就放了x，y坐标，你们可以再加入展馆名称、id什么的。
-    private double x;
-    private double y;
+    private static int count = 0;
+    private float x;
+    private float y;
+    private int number;
+    private String name;
 
-    public LBSPoint() {
+    public LBSPoint(Location location) {
+        this.x = location.getX();
+        this.y = location.getY();
+        count++;
+        number = count;
     }
 
-    public LBSPoint(double x, double y) {
-
-        this.x = x;
-        this.y = y;
+    public int getNumber() {
+        return number;
     }
 
-    public double getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public double getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(float y) {
         this.y = y;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {// TODO: get name from exhibition hall
+        this.name = name;
     }
 }

@@ -22,6 +22,11 @@ public class MuseumData {
     private static ArrayList<DataItem> data;
     private static List<ShowroomItem> exhibitionHalls;
     private static Context context;
+
+    public static List<ShowroomItem> getExhibitionHalls() {
+        return exhibitionHalls;
+    }
+
     private static Set<Integer> favors;
 
     //must be called at very first in Homepage

@@ -15,8 +15,13 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import com.iShamrock.iMuseum.acvitity.Navigation;
+import com.iShamrock.iMuseum.data.MuseumData;
+import com.iShamrock.iMuseum.data.ShowroomItem;
+import com.ids.sdk.android.model.Location;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 逢双 on 14-2-22.
@@ -24,7 +29,8 @@ import java.util.ArrayList;
 public class ARActivity extends Activity {
 
     //用定位更新currentPoint
-    LBSPoint currentPoint = new LBSPoint(0, 0);
+    private Location currentLocation = Navigation.currentLocation;
+    LBSPoint currentPoint = new LBSPoint(currentLocation);
     CameraPreview cameraPreview;
     SensorManager sensorManager;
     Sensor orientalSensor;
@@ -96,10 +102,11 @@ public class ARActivity extends Activity {
         angleArray = new ArrayList<>();
         //这里在angleArray里面加入展馆的坐标（固定值）
         //new Angle(angle, 现在坐标, 展馆坐标);
-        angleArray.add(new Angle(angle, new LBSPoint(0, 0), new LBSPoint(100, 100)));
-        angleArray.add(new Angle(angle, new LBSPoint(0, 0), new LBSPoint(100, -100)));
-        angleArray.add(new Angle(angle, new LBSPoint(0, 0), new LBSPoint(-100, 100)));
-        angleArray.add(new Angle(angle, new LBSPoint(0, 0), new LBSPoint(-100, -100)));
+//        MuseumData.initData(this);
+        List<ShowroomItem> exhibitionHalls = MuseumData.getExhibitionHalls();
+        for (ShowroomItem exhibitionHall : exhibitionHalls) {
+            angleArray.add(new Angle(angle, new LBSPoint(currentLocation), new LBSPoint(exhibitionHall.getLocation()), exhibitionHall.getName()));
+        }
     }
 
     private void initOrientalSensor() {
