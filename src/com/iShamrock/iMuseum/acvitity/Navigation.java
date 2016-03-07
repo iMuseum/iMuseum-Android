@@ -80,79 +80,79 @@ public class Navigation extends Activity {
             public void onLoaded() {
                 toast("(*^_^*)");
                 //add marker
-//                map.addMarker(m0, new Map.MarkerCallback() {
-//                            @Override
-//                            public View getView(Marker marker) {
-//                                return createTextView("第一展览馆");
-//                            }
-//                });
-//                map.addMarker(m1, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国古代雕塑馆");
-//                    }
-//                });
-//                map.addMarker(m2, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国古代青铜馆");
-//                    }
-//                });
-//                map.addMarker(m3, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国古代陶瓷馆");
-//                    }
-//                });
-//                map.addMarker(m4, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("第二展览馆");
-//                    }
-//                });
-//                map.addMarker(m5, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国历代绘画馆");
-//                    }
-//                });
-//                map.addMarker(m6, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国历代书法馆");
-//                    }
-//                });
-//                map.addMarker(m7, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国历代玺印馆");
-//                    }
-//                });
-//                map.addMarker(m8, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国少数民族工艺馆");
-//                    }
-//
-//                });
-//                map.addMarker(m9, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国历代钱币馆");
-//                    }
-//                });
-//                map.addMarker(m10, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国历代玉器馆");
-//                    }
-//                });
-//                map.addMarker(m11, new Map.MarkerCallback() {
-//                    @Override
-//                    public View getView(Marker marker) {
-//                        return createTextView("中国明清家具馆");
-//                    }
-//                });
+                map.addMarker(m0, new Map.MarkerCallback() {
+                            @Override
+                            public View getView(Marker marker) {
+                                return createTextView("第一展览馆");
+                            }
+                });
+                map.addMarker(m1, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国古代雕塑馆");
+                    }
+                });
+                map.addMarker(m2, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国古代青铜馆");
+                    }
+                });
+                map.addMarker(m3, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国古代陶瓷馆");
+                    }
+                });
+                map.addMarker(m4, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("第二展览馆");
+                    }
+                });
+                map.addMarker(m5, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国历代绘画馆");
+                    }
+                });
+                map.addMarker(m6, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国历代书法馆");
+                    }
+                });
+                map.addMarker(m7, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国历代玺印馆");
+                    }
+                });
+                map.addMarker(m8, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国少数民族工艺馆");
+                    }
+
+                });
+                map.addMarker(m9, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国历代钱币馆");
+                    }
+                });
+                map.addMarker(m10, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国历代玉器馆");
+                    }
+                });
+                map.addMarker(m11, new Map.MarkerCallback() {
+                    @Override
+                    public View getView(Marker marker) {
+                        return createTextView("中国明清家具馆");
+                    }
+                });
                 toast("marker done");
                 map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);//test
 
