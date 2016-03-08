@@ -29,8 +29,8 @@ import java.util.List;
 public class ARActivity extends Activity {
 
     //用定位更新currentPoint
-    private Location currentLocation = new Location(0, 0, 3);
-    //    private Location currentLocation = Navigation.currentLocation;
+//    private Location currentLocation = new Location(0, 0, 3);
+    private Location currentLocation = Navigation.currentLocation;
     LBSPoint currentPoint = new LBSPoint(currentLocation);
     CameraPreview cameraPreview;
     SensorManager sensorManager;
@@ -103,10 +103,18 @@ public class ARActivity extends Activity {
         angleArray = new ArrayList<>();
         //这里在angleArray里面加入展馆的坐标（固定值）
         //new Angle(angle, 现在坐标, 展馆坐标);
-        MuseumData.initData(this);
+//        MuseumData.initData(this);
         List<ShowroomItem> exhibitionHalls = MuseumData.getExhibitionHalls();
         for (ShowroomItem exhibitionHall : exhibitionHalls) {
-            angleArray.add(new Angle(angle, currentPoint, new LBSPoint(exhibitionHall.getLocation()), exhibitionHall.getName()));
+            if (exhibitionHall.getLocation().getFloorLevel() == 4) {
+                angleArray.add(new Angle(angle, currentPoint, new LBSPoint(exhibitionHall.getLocation()), exhibitionHall.getName()));
+            }
+        }
+        LBSPoint.count += 2;
+        for (ShowroomItem exhibitionHall : exhibitionHalls) {
+            if (exhibitionHall.getLocation().getFloorLevel() == 3) {
+                angleArray.add(new Angle(angle, currentPoint, new LBSPoint(exhibitionHall.getLocation()), exhibitionHall.getName()));
+            }
         }
     }
 

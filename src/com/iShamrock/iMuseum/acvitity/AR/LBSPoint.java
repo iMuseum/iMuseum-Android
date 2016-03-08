@@ -7,7 +7,7 @@ import com.ids.sdk.android.model.Location;
  */
 public class LBSPoint {
     //我现在就放了x，y坐标，你们可以再加入展馆名称、id什么的。
-    private static int count = 0;
+    public static int count = 0;
     private float x;
     private float y;
     private int number;
