@@ -26,7 +26,7 @@ public class ARTextView extends View {
         //这里可以改paint
         paint = new Paint();
         paint.setColor(Color.WHITE);
-        paint.setTextSize(100);
+        paint.setTextSize(60);
         paint.setAntiAlias(true);
 
         handler = activity.handler;
