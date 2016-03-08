@@ -39,7 +39,7 @@ public class Navigation extends Activity {
     private ListView drawerList;
     private ImageButton leftDrawerBtn;
     private DrawerLayout drawerLayout;
-    private static Location currentLocation;
+    public static Location currentLocation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
