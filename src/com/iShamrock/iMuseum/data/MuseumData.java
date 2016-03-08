@@ -19,14 +19,12 @@ import java.util.Map;
  */
 public class MuseumData {
     private static InputStream inputStream;
-    private static ArrayList<DataItem> data;
+    public static ArrayList<DataItem> data;
     private static List<ShowroomItem> exhibitionHalls;
     private static Context context;
-
     public static List<ShowroomItem> getExhibitionHalls() {
         return exhibitionHalls;
     }
-
     private static Set<Integer> favors;
 
     //must be called at very first in Homepage
@@ -226,5 +224,9 @@ public class MuseumData {
         favors.remove(id);
     }
 
+
+    public static ArrayList<DataItem> getData() {
+        return data;
+    }
 
 }
