@@ -173,10 +173,6 @@ public class Navigation extends Activity {
                     }
                 });
                 toast("marker done");
-                if (destination != null) {
-                    //map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);
-                    map.navigateTo(destination);
-                }
             }
         });
 
@@ -334,6 +330,10 @@ public class Navigation extends Activity {
                 //test
                 Log.i("get location", "\n"+location.getFloorLevel() + "楼\n"
                 + "x坐标: "+location.getX() + "\ny坐标: " + location.getY());
+                if (destination != null) {
+                    //map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);
+                    map.navigateTo(destination);
+                }
             }
 
             @Override
