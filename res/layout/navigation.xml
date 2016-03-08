@@ -25,10 +25,10 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jump"
+                android:text="进入展馆"
                 android:id="@+id/jump_button"
                 android:textSize="30dp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
-                android:background="#ff88b9e9"/>
+                android:alpha="0.6" android:textColor="#ffee7d2e"/>
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -75,6 +75,7 @@ public class Navigation extends Activity {
 
         mapView = (MapView) findViewById(R.id.map_view);
         map = mapView.getMap();
+        //地图俯视图右上角算起 向下y,向左x
         Marker m0 = new Marker((float) 58.9, (float)14.9, 3);
         Marker m1 = new Marker((float) 38.0, (float)14.9, 3);
         Marker m2 = new Marker((float) 18.4, (float)14.9, 3);
@@ -172,8 +173,10 @@ public class Navigation extends Activity {
                     }
                 });
                 toast("marker done");
-                map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);//test
-
+                if (destination != null) {
+                    //map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);
+                    map.navigateTo(destination);
+                }
             }
         });
 
@@ -181,62 +184,62 @@ public class Navigation extends Activity {
             @Override
             public void onClickPoi(int poiId, int floorLevel, int buildingId) {
                 switch (poiId){
-                    case 485788:{
+                    case 611011:{
                         exhibitionHallName = "第一展览馆";
                         location = new Location((float) 58.9, (float)14.9, 3);
                         break;
                     }
-                    case 485779:{
+                    case 611008:{
                         exhibitionHallName = "中国古代雕塑馆";
                         location = new Location((float) 38.0, (float)14.9, 3);
                         break;
                     }
-                    case 485761:{
+                    case 611001:{
                         exhibitionHallName = "中国古代青铜馆";
                         location = new Location((float) 18.4, (float)14.9, 3);
                         break;
                     }
-                    case 485771:{
+                    case 611012:{
                         exhibitionHallName = "中国古代陶瓷馆";
                         location = new Location((float) 10.0, (float)20.0, 3);
                         break;
                     }
-                    case 485775:{
+                    case 611013:{
                         exhibitionHallName = "第二展览馆";
                         location = new Location((float) 10.0, (float)35.0, 3);
                         break;
                     }
-                    case 485773:{
+                    case 611014:{
                         exhibitionHallName = "中国历代绘画馆";
                         location = new Location((float) 10.0, (float)40.0, 3);
                         break;
                     }
-                    case 485777:{
+                    case 611017:{
                         exhibitionHallName = "中国历代书法馆";
                         location = new Location((float) 10.0, (float)50.0, 3);
                         break;
                     }
-                    case 485763:{
+                    case 611018:{
                         exhibitionHallName = "中国历代玺印馆";
                         location = new Location((float) 15.0, (float)50.0, 3);
                         break;
                     }
-                    case 485772:{
+                    case 611020:{
                         exhibitionHallName = "中国少数民族工艺馆";
                         location = new Location((float) 26.2, (float)51.1, 3);
                         break;
                     }
-                    case 485762:{
+                    case 611021:{
                         exhibitionHallName = "中国历代钱币馆";
                         location = new Location((float) 40.0, (float)50.0, 3);
                         break;
                     }
-                    case 485792:{
+                    case 610962:{
                         exhibitionHallName = "中国历代玉器馆";
                         location = new Location((float) 52.0, (float)30.0, 4);
                         break;
                     }
-                    case 485793:{
+                    case 610964:{
                         exhibitionHallName = "中国明清家具馆";
                         location = new Location((float) 52.0, (float)45.0, 4);
                         break;
@@ -336,7 +339,7 @@ public class Navigation extends Activity {
             @Override
             public void onLocatingFail() {
                 map.hideLocation();
-//                toast("Locator Fail!");
+                Log.e("Locate", "LocatingFail!!");
             }
         });
 
