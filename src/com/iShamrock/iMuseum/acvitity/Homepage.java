@@ -44,7 +44,9 @@ public class Homepage extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
-        MuseumData.initData(this);
+        if (MuseumData.data == null) {
+            MuseumData.initData(this);
+        }
         initLeftDrawer();
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout_homepage);
         /*
