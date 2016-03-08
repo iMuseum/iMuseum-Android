@@ -83,7 +83,6 @@ public class ARActivity extends Activity {
                         }
                         handler.sendEmptyMessage(-1);
                     } catch (Exception e) {
-//                        System.out.println("eeee");
                     }
                 }
             }

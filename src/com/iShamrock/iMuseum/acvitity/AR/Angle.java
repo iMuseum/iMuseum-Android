@@ -53,10 +53,13 @@ public class Angle {
     }
 
     private void calculateDAngle(){
+        //angle & oriental 弧度制
+        //todo : maybe need a angle to adjust
         double a = angle - oriental;
-        double b = angle - oriental + 2 * Math.PI;
+        double b = angle - oriental + 2 * Math.PI;//limits
         double c = angle - oriental - 2 * Math.PI;
-        if(Math.abs(a) < Math.abs(b) && Math.abs(a) < Math.abs(b)){
+        //dAngle should between 0 & 2PI
+        if(Math.abs(a) < Math.abs(b) && Math.abs(a) < Math.abs(c)){
             dAngle = a;
         }
         else if(Math.abs(b) < Math.abs(a) && Math.abs(b) < Math.abs(c)){

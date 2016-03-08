@@ -39,6 +39,7 @@ public class Navigation extends Activity {
     private ListView drawerList;
     private ImageButton leftDrawerBtn;
     private DrawerLayout drawerLayout;
+    private ImageButton visionBtn;
     public static Location currentLocation;
 
     @Override
@@ -57,8 +58,24 @@ public class Navigation extends Activity {
             }
         });
 
+        visionBtn = (ImageButton) findViewById(R.id.to_vision);
+        visionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentLocation != null) {
+                    Intent intent = new Intent();
+                    intent.setClass(Navigation.this, ARActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    toast("Please click MY LOCATION first");
+                }
+            }
+        });
+
         mapView = (MapView) findViewById(R.id.map_view);
         map = mapView.getMap();
+        //地图俯视图右上角算起 向下y,向左x
         Marker m0 = new Marker((float) 58.9, (float)14.9, 3);
         Marker m1 = new Marker((float) 38.0, (float)14.9, 3);
         Marker m2 = new Marker((float) 18.4, (float)14.9, 3);
@@ -156,8 +173,10 @@ public class Navigation extends Activity {
                     }
                 });
                 toast("marker done");
-                map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);//test
-
+                if (destination != null) {
+                    //map.navigate(new Location((float)50.0, (float) 10.0, 3), destination);
+                    map.navigateTo(destination);
+                }
             }
         });
 
@@ -320,7 +339,7 @@ public class Navigation extends Activity {
             @Override
             public void onLocatingFail() {
                 map.hideLocation();
-//                toast("Locator Fail!");
+                Log.e("Locate", "LocatingFail!!");
             }
         });
 
