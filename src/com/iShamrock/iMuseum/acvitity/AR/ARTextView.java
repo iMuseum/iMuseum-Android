@@ -18,14 +18,7 @@ import java.util.ArrayList;
  */
 public class ARTextView extends View {
 
-    DisplayMetrics dm = ARActivity.dm;
-//    Bitmap[] bubblePiece = new Bitmap[3];
-    ArrayList<Angle> angleArray;
-//    BubbleManager bubbleManager;
     Handler handler;
-    Canvas canvas;
-    Bitmap result;
-//    int picHeight = MapView.bubblePiece[0].getHeight();
     Paint paint;
 
     public ARTextView(Context context, ARActivity activity) {
@@ -43,7 +36,6 @@ public class ARTextView extends View {
     protected void onDraw(Canvas canvas) {
         canvas.rotate(270);
 //        this.canvas = canvas;
-        angleArray = ARActivity.angleArray;
 //        bubbleManager = MapView.bubbleManager;
 //        bubblePiece[0] = BitmapFactory.decodeResource(getResources(), R.drawable.ar_bubble_left);
 //        bubblePiece[1] = BitmapFactory.decodeResource(getResources(), R.drawable.ar_bubble_center);
@@ -77,7 +69,7 @@ public class ARTextView extends View {
 //                    (float) angleArray.get(i).getHeight(), paint);
 //        }
         //上面一堆被注释的主要是给文字加个框，因为文字是变长的所以框也要变长，时间有多的话可以试一试
-        for (Angle angle : angleArray) {
+        for (Angle angle : ARActivity.angleArray) {
             canvas.drawText(angle.getText(), (float) angle.getxPercent() * canvas.getWidth() - canvas.getWidth(),
                     (float) angle.getHeight(), paint);
         }

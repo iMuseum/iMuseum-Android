@@ -109,7 +109,7 @@ public class Angle {
     }
 
     public double getHeight() {
-        return there.getNumber() * dm.heightPixels / 25.0;
+        return there.getNumber() * dm.heightPixels / 10.0 + dm.heightPixels * 0.3;// - dm.heightPixels * 1.3;
     }
 
     public double getDistance() {

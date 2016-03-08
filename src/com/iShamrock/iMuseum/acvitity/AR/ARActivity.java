@@ -29,7 +29,8 @@ import java.util.List;
 public class ARActivity extends Activity {
 
     //用定位更新currentPoint
-    private Location currentLocation = Navigation.currentLocation;
+    private Location currentLocation = new Location(0, 0, 3);
+    //    private Location currentLocation = Navigation.currentLocation;
     LBSPoint currentPoint = new LBSPoint(currentLocation);
     CameraPreview cameraPreview;
     SensorManager sensorManager;
@@ -69,15 +70,15 @@ public class ARActivity extends Activity {
         this.context = this;
         setContentView(cameraPreview);
         initOrientalSensor();
+        getAngles();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                getAngles();
                 addARTextView();
                 while (true) {
                     try {
                         //这里是以1秒为间隔，可以适当缩短
-                        Thread.sleep(1000);
+                        Thread.sleep(300);
                         for (int i = 0; i < angleArray.size(); i++) {
                             angleArray.get(i).reset((values[0] * Math.PI / 180), currentPoint);
                         }
@@ -98,14 +99,15 @@ public class ARActivity extends Activity {
     }
 
     private void getAngles() {
+        LBSPoint.reset();
         double angle = values[0] * Math.PI / 180;
         angleArray = new ArrayList<>();
         //这里在angleArray里面加入展馆的坐标（固定值）
         //new Angle(angle, 现在坐标, 展馆坐标);
-//        MuseumData.initData(this);
+        MuseumData.initData(this);
         List<ShowroomItem> exhibitionHalls = MuseumData.getExhibitionHalls();
         for (ShowroomItem exhibitionHall : exhibitionHalls) {
-            angleArray.add(new Angle(angle, new LBSPoint(currentLocation), new LBSPoint(exhibitionHall.getLocation()), exhibitionHall.getName()));
+            angleArray.add(new Angle(angle, currentPoint, new LBSPoint(exhibitionHall.getLocation()), exhibitionHall.getName()));
         }
     }
 
@@ -130,10 +132,10 @@ public class ARActivity extends Activity {
         @Override
         public void onSensorChanged(SensorEvent event) {
             values = event.values;
-            Log.i("SensorValue", values[0]+"    "+values[1]+"   "+values[2]);
+            Log.i("SensorValue", values[0] + "    " + values[1] + "   " + values[2]);
             for (int i = 0; i < angleArray.size(); i++) {
                 //这里是重新设定现在的地理位置和方向，不用修改
-                angleArray.get(i).reset((double)values[0], currentPoint);
+                angleArray.get(i).reset((double) values[0], currentPoint);
             }
         }
 

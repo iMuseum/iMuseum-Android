@@ -47,4 +47,8 @@ public class LBSPoint {
     public void setName(String name) {// TODO: get name from exhibition hall
         this.name = name;
     }
+
+    public static void reset() {
+        count = 0;
+    }
 }
