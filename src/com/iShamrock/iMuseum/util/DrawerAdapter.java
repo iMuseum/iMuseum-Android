@@ -37,9 +37,9 @@ public class DrawerAdapter extends BaseAdapter {
         drawerList.add("iMuseum");
         drawerList.add("Homepage");
         drawerList.add("Map");
-        drawerList.add("Vision");
         drawerList.add("Favor");
         drawerList.add("Navigation");
+//        drawerList.add("Vision");
     }
 
     @Override

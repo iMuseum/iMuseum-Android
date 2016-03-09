@@ -23,16 +23,17 @@ public class DrawerItemOnClickAction {
                     intent.setClass(activity, Map.class);
                     activity.startActivity(intent);
                     break;
+
                 case 3:
-                    intent.setClass(activity, Vision.class);
-                    activity.startActivity(intent);
-                    break;
-                case 4:
                     intent.setClass(activity, Favor.class);
                     activity.startActivity(intent);
                     break;
-                case 5:
+                case 4:
                     intent.setClass(activity, Navigation.class);
+                    activity.startActivity(intent);
+                    break;
+                case 5:
+                    intent.setClass(activity, Vision.class);
                     activity.startActivity(intent);
                     break;
             }
