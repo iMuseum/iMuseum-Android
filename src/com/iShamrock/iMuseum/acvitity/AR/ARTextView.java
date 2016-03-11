@@ -6,7 +6,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +20,7 @@ import java.util.ArrayList;
  */
 public class ARTextView extends View {
 
+    private DisplayMetrics dm = ARActivity.dm;
     Handler handler;
     Paint paint;
 
@@ -77,19 +80,19 @@ public class ARTextView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //这里加入点击事件，在ARActivity里面的handler有提及
-//        for (int i = 0; i < angleArray.size(); i++) {
-//            double x = (float) angleArray.get(i).getxPercent() * canvas.getWidth() - (float) (10 * dm.widthPixels / 320);
-//            double y = (float) angleArray.get(i).getHeight() - (float) (15 * dm.widthPixels / 320);
-//                       System.out.println(event.getX() + " " + event.getY());
-//            if (canvas.getWidth() - event.getY() > x && canvas.getWidth() - event.getY() < x + result.getWidth()) {
-//                if (event.getX() > y && event.getX() < y + result.getHeight()) {
-//                    System.out.println("touched " + bubbleManager.getBubbleArray().get(i).getMessage());
-//                    handler.sendEmptyMessage(i);
-//                    break;
-//                }
-//            }
-//        }
+        for (int i = 0; i < ARActivity.angleArray.size(); i++) {
+            int heightIndex = i;
+            if (heightIndex >= 2) {
+                heightIndex += 2;
+            }
+            double heightTop = 73 * heightIndex + 250;
+            double heightBottom = 73 * heightIndex + 310;
+            double ratio = 1.0;
+
+            if (event.getX() * ratio > heightTop && event.getX() * ratio < heightBottom) {
+                handler.sendEmptyMessage((i+10)%12);
+            }
+        }
         return super.onTouchEvent(event);
     }
 }

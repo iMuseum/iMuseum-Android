@@ -2,6 +2,7 @@ package com.iShamrock.iMuseum.acvitity.AR;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import com.iShamrock.iMuseum.acvitity.Navigation;
+import com.iShamrock.iMuseum.acvitity.Showroom;
 import com.iShamrock.iMuseum.data.MuseumData;
 import com.iShamrock.iMuseum.data.ShowroomItem;
 import com.ids.sdk.android.model.Location;
@@ -29,8 +31,8 @@ import java.util.List;
 public class ARActivity extends Activity {
 
     //用定位更新currentPoint
-//    private Location currentLocation = new Location(0, 0, 3);
-    private Location currentLocation = Navigation.currentLocation;
+    private Location currentLocation = new Location(0, 0, 3);
+//    private Location currentLocation = Navigation.currentLocation;
     LBSPoint currentPoint = new LBSPoint(currentLocation);
     CameraPreview cameraPreview;
     SensorManager sensorManager;
@@ -52,6 +54,10 @@ public class ARActivity extends Activity {
 //                Intent intent = new Intent(context, Discussion.class);
 //                intent.putExtra("position", msg.what);
 //                startActivity(intent);
+                System.out.println("Handler get message " + msg.what);
+                Intent intent = new Intent(context, Showroom.class);
+                intent.putExtra("name", MuseumData.getExhibitionHalls().get(msg.what).getName());
+                startActivity(intent);
             }
         }
     };
@@ -103,7 +109,7 @@ public class ARActivity extends Activity {
         angleArray = new ArrayList<>();
         //这里在angleArray里面加入展馆的坐标（固定值）
         //new Angle(angle, 现在坐标, 展馆坐标);
-//        MuseumData.initData(this);
+        MuseumData.initData(this);
         List<ShowroomItem> exhibitionHalls = MuseumData.getExhibitionHalls();
         for (ShowroomItem exhibitionHall : exhibitionHalls) {
             if (exhibitionHall.getLocation().getFloorLevel() == 4) {
@@ -139,7 +145,7 @@ public class ARActivity extends Activity {
         @Override
         public void onSensorChanged(SensorEvent event) {
             values = event.values;
-            Log.i("SensorValue", values[0] + "    " + values[1] + "   " + values[2]);
+//            Log.i("SensorValue", values[0] + "    " + values[1] + "   " + values[2]);
             for (int i = 0; i < angleArray.size(); i++) {
                 //这里是重新设定现在的地理位置和方向，不用修改
                 angleArray.get(i).reset((double) values[0], currentPoint);

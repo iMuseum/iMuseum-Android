@@ -46,7 +46,7 @@ public class CameraPreview extends SurfaceView implements SurfaceHolder.Callback
                             @Override
                             public void onAutoFocus(boolean success, Camera camera) {
                                 if(success){
-                                    System.out.println("自动对焦成功");
+//                                    System.out.println("自动对焦成功");
                                 }
                             }
                         });
